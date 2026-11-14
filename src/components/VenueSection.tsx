@@ -4,7 +4,6 @@ import { copyText, maps } from '../lib/links';
 import { Check, Copy, External, MapPin, Navigation, Phone } from './Icons';
 import { Corner } from './Ornaments';
 import SectionHeading from './SectionHeading';
-import LocationOverview from './LocationOverview';
 import DirectionsSection from './DirectionsSection';
 
 export default function VenueSection() {
@@ -61,7 +60,6 @@ export default function VenueSection() {
         </div>
       </div>
 
-      <LocationOverview />
       <DirectionsSection />
     </section>
   );

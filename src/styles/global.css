@@ -1842,51 +1842,6 @@ button {
   margin: 6px auto 0;
   color: var(--muted);
 }
-.mapview__frame {
-  position: relative;
-  border-radius: var(--radius);
-  overflow: hidden;
-  border: 1px solid var(--gold);
-  box-shadow:
-    0 0 0 6px var(--ivory),
-    0 0 0 7px rgba(194, 154, 75, 0.45),
-    0 30px 60px -36px rgba(44, 22, 64, 0.55);
-}
-.lazyframe,
-.lazyframe iframe {
-  display: block;
-  width: 100%;
-  height: clamp(320px, 56vw, 460px);
-  border: 0;
-}
-.lazyframe__placeholder {
-  height: 100%;
-  display: grid;
-  place-items: center;
-  background:
-    repeating-linear-gradient(45deg, rgba(194, 154, 75, 0.08) 0 12px, transparent 12px 24px),
-    var(--ivory-2);
-  color: var(--muted);
-  font-family: var(--f-serif);
-  font-style: italic;
-}
-.mapview__link {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 6px;
-  margin-top: 18px;
-  font-size: 0.78rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--maroon);
-  text-decoration: none;
-}
-.mapview__link:hover {
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-
 .route {
   position: relative;
   max-width: 640px;
@@ -1999,64 +1954,6 @@ button {
   box-shadow: 0 10px 20px -12px rgba(30, 14, 46, 0.6);
 }
 
-/* Landmark card under the overview map */
-.landmark {
-  margin: 26px auto 0;
-  max-width: 560px;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 16px;
-  padding: 14px;
-  border-radius: var(--radius);
-  background:
-    var(--paper),
-    linear-gradient(160deg, #fffafc, var(--ivory-2));
-  border: 1px solid rgba(194, 154, 75, 0.55);
-  box-shadow: 0 24px 40px -30px rgba(44, 22, 64, 0.55);
-  text-align: left;
-}
-.landmark__img {
-  width: 100%;
-  border-radius: 12px;
-  aspect-ratio: 322 / 282;
-  object-fit: cover;
-}
-.landmark__text {
-  display: grid;
-  gap: 4px;
-  align-content: center;
-}
-.landmark__label {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.7rem;
-  letter-spacing: 0.26em;
-  text-transform: uppercase;
-  color: var(--gold-deep);
-}
-.landmark__name {
-  font-family: var(--f-serif);
-  font-weight: 600;
-  font-size: 1.35rem;
-  line-height: 1.25;
-  color: var(--maroon);
-}
-.landmark__note {
-  font-family: var(--f-serif);
-  font-style: italic;
-  color: var(--muted);
-}
-.landmark__hint {
-  margin-top: 4px;
-  font-size: 0.88rem;
-  color: var(--ink);
-}
-@media (min-width: 640px) {
-  .landmark {
-    grid-template-columns: 220px 1fr;
-  }
-}
 .route__cta {
   width: min(100%, 340px);
 }

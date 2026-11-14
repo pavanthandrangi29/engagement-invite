@@ -2,13 +2,12 @@ import { weddingConfig as c } from '../data/weddingConfig';
 import { asset, maps } from '../lib/links';
 import { Landmark, MapPin, Navigation } from './Icons';
 
-/** MAP VIEW 2 — getting there: an illustrated route card, not another map. */
+/** Getting there: route card with the landmark and one-tap navigation to the house pin. */
 export default function DirectionsSection() {
   const marks = c.venue.landmarks;
   return (
     <div className="mapview mapview--directions" data-reveal>
       <div className="mapview__head">
-        <p className="mapview__kicker">Map view 2 of 2</p>
         <h3 className="mapview__title">Getting There</h3>
         <p className="mapview__lede">
           One tap opens turn-by-turn directions in Google Maps, straight to the house pin, from wherever you are.
