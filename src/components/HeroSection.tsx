@@ -3,12 +3,13 @@ import { si } from '../lib/style';
 import Countdown from './Countdown';
 import GoldParticles from './GoldParticles';
 import { ChevronDown } from './Icons';
-import { BrassLamp, Divider, JasmineStrand, MandapamArch, Namam, Toran } from './Ornaments';
+import { BrassLamp, Divider, FallingPetals, JasmineStrand, MandapamArch, Namam, Toran } from './Ornaments';
 
 export default function HeroSection() {
   return (
     <header className="hero" id="top" tabIndex={-1}>
       <GoldParticles />
+      <FallingPetals className="hero__petals" count={12} />
       <Toran className="hero__toran" count={27} />
       <JasmineStrand className="hero__jasmine hero__jasmine--l" length={22} />
       <JasmineStrand className="hero__jasmine hero__jasmine--l2" length={14} />

@@ -31,6 +31,16 @@ export function OrnamentDefs() {
           <stop offset="0" stopColor="#5E8F4A" />
           <stop offset="1" stopColor="#24563A" />
         </linearGradient>
+        <radialGradient id="g-lav" cx=".35" cy=".3" r=".8">
+          <stop offset="0" stopColor="#F1E6FA" />
+          <stop offset=".55" stopColor="#C9AEE3" />
+          <stop offset="1" stopColor="#9C7CC4" />
+        </radialGradient>
+        <radialGradient id="g-blush" cx=".35" cy=".3" r=".8">
+          <stop offset="0" stopColor="#FFF0F5" />
+          <stop offset=".6" stopColor="#F2C9DC" />
+          <stop offset="1" stopColor="#D89BBB" />
+        </radialGradient>
         <radialGradient id="g-marigold" cx=".4" cy=".35" r=".7">
           <stop offset="0" stopColor="#FFD27A" />
           <stop offset=".6" stopColor="#F0A12E" />
@@ -56,8 +66,20 @@ export function OrnamentDefs() {
   );
 }
 
-/* ── Mango-leaf toran with marigolds ─────────────────────────── */
-const LEAF = 'M0 0 C 10 11, 10 34, 0 50 C -10 34, -10 11, 0 0 Z';
+/* ── Floral garland: lavender & blush blossoms on a gold cord ── */
+const PETALS = [0, 72, 144, 216, 288];
+
+function Blossom({ r, fill }: { r: number; fill: string }) {
+  return (
+    <g className="garland__bloom">
+      {PETALS.map((a) => (
+        <ellipse key={a} cy={-r * 0.62} rx={r * 0.48} ry={r * 0.62} transform={`rotate(${a})`} fill={fill} />
+      ))}
+      <circle r={r * 0.26} fill="url(#g-gold)" />
+      <circle r={r * 0.1} fill="#FFF6DA" />
+    </g>
+  );
+}
 
 export function Toran({ count = 25, className, style }: P & { count?: number }) {
   const step = 44;
@@ -76,35 +98,59 @@ export function Toran({ count = 25, className, style }: P & { count?: number }) 
       preserveAspectRatio="xMidYMin meet"
       aria-hidden="true"
     >
-      <path d={`M0 6 Q ${w / 2} ${6 + sag * 2} ${w} 6`} fill="none" stroke="url(#g-gold)" strokeWidth="2" />
-      {items.map(({ x, y: yy, i }) =>
-        i % 3 === 1 ? (
-          <g key={i} transform={`translate(${x} ${yy + 9})`} className="toran__flower">
-            <line x1="0" y1="-8" x2="0" y2="0" stroke="#A8792C" strokeWidth="1" />
-            <circle r="9" fill="url(#g-marigold)" />
-            <circle r="6.2" fill="none" stroke="#B85F0E" strokeWidth="1.4" strokeDasharray="1.6 2.2" opacity=".75" />
-            <circle r="2.6" fill="#B85F0E" opacity=".7" />
-            <circle cy="19" r="5.5" fill="url(#g-marigold)" />
-          </g>
-        ) : (
+      <path d={`M0 6 Q ${w / 2} ${6 + sag * 2} ${w} 6`} fill="none" stroke="url(#g-gold)" strokeWidth="1.6" />
+      {items.map(({ x, y: yy, i }) => {
+        const kind = i % 4;
+        const len = kind === 0 ? 30 : kind === 2 ? 20 : 10;
+        return (
           <g
             key={i}
-            className="toran__leaf"
-            style={{ animationDelay: `${(i % 7) * -0.6}s` }}
-            transform={`translate(${x} ${yy}) rotate(${i % 2 ? 4 : -4})`}
+            className="garland__drop"
+            style={{ animationDelay: `${(i % 7) * -0.7}s` }}
+            transform={`translate(${x} ${yy})`}
           >
-            <path d={LEAF} fill={i % 2 ? 'url(#g-leaf)' : 'url(#g-leaf-2)'} />
-            <path d="M0 3 L0 46" stroke="#D8C07A" strokeWidth=".9" opacity=".75" />
-            <path
-              d="M0 14 L5 10 M0 22 L-5 18 M0 30 L5 26 M0 38 L-4 34"
-              stroke="#D8C07A"
-              strokeWidth=".5"
-              opacity=".5"
-            />
+            <line x1="0" y1="0" x2="0" y2={len} stroke="#C9A45C" strokeWidth=".8" />
+            {/* small leaves at the stem */}
+            <ellipse cx="-4" cy="5" rx="2.2" ry="5" transform="rotate(-40 -4 5)" fill="#A9B79A" opacity=".8" />
+            <ellipse cx="4" cy="7" rx="2" ry="4.6" transform="rotate(40 4 7)" fill="#C2CDB4" opacity=".8" />
+            <g transform={`translate(0 ${len})`}>
+              {kind === 0 && <Blossom r={11} fill="url(#g-lav)" />}
+              {kind === 2 && <Blossom r={8.5} fill="url(#g-blush)" />}
+              {(kind === 1 || kind === 3) && (
+                <g className="garland__bud">
+                  <circle cx="-3" r="2.6" fill="url(#g-jasmine)" />
+                  <circle cx="3" cy="2" r="2.2" fill="url(#g-jasmine)" />
+                  <circle cy="5" r="3.2" fill={kind === 1 ? 'url(#g-lav)' : 'url(#g-blush)'} />
+                </g>
+              )}
+            </g>
           </g>
-        ),
-      )}
+        );
+      })}
     </svg>
+  );
+}
+
+/* ── Drifting lavender petals ───────────────────────────────── */
+export function FallingPetals({ count = 16, className }: { count?: number; className?: string }) {
+  const tones = ['petal--lav', 'petal--blush', 'petal--white'];
+  return (
+    <div className={`petals ${className ?? ''}`} aria-hidden="true">
+      {Array.from({ length: count }, (_, i) => (
+        <span
+          key={i}
+          className={`petal ${tones[i % 3]}`}
+          style={
+            {
+              left: `${(i * 61) % 100}%`,
+              animationDelay: `${(i * 1.7) % 11}s`,
+              animationDuration: `${11 + (i % 5) * 2}s`,
+              '--drift': `${(i % 2 ? 1 : -1) * (20 + (i % 4) * 14)}px`,
+            } as CSSProperties
+          }
+        />
+      ))}
+    </div>
   );
 }
 
