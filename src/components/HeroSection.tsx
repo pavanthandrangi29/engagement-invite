@@ -3,7 +3,7 @@ import { si } from '../lib/style';
 import Countdown from './Countdown';
 import GoldParticles from './GoldParticles';
 import { ChevronDown } from './Icons';
-import { BrassLamp, Divider, JasmineStrand, MandapamArch, Toran } from './Ornaments';
+import { BrassLamp, Divider, JasmineStrand, MandapamArch, Namam, Toran } from './Ornaments';
 
 export default function HeroSection() {
   return (
@@ -19,6 +19,12 @@ export default function HeroSection() {
 
       <div className="hero__inner">
         <div className="hero__content">
+          {c.invocation && (
+            <div className="invocation stagger" style={si(0)}>
+              <Namam className="invocation__mark" />
+              <p className="invocation__text">{c.invocation}</p>
+            </div>
+          )}
           {c.teluguBlessing && (
             <p className="hero__telugu stagger" lang="te" style={si(0)}>
               {c.teluguBlessing}
@@ -34,15 +40,15 @@ export default function HeroSection() {
           <div className="hero__mandapam">
             <MandapamArch className="hero__arch stagger" style={si(3)} />
             <h2 className="hero__names" aria-label={`${c.groom.name} and ${c.bride.name}`}>
-            <span className="hero__name stagger" style={si(3)}>
-              {c.groom.name}
-            </span>
-            <span className="hero__amp stagger" style={si(4)} aria-hidden="true">
-              &amp;
-            </span>
-            <span className="hero__name stagger" style={si(5)}>
-              {c.bride.name}
-            </span>
+              <span className="hero__name stagger" style={si(3)}>
+                {c.groom.name}
+              </span>
+              <span className="hero__amp stagger" style={si(4)} aria-hidden="true">
+                &amp;
+              </span>
+              <span className="hero__name stagger" style={si(5)}>
+                {c.bride.name}
+              </span>
             </h2>
           </div>
 
@@ -53,7 +59,9 @@ export default function HeroSection() {
             <p className="hero__date">{c.event.dateLong}</p>
             <p className="hero__time">
               {c.event.time}
-              <span className="dot" aria-hidden="true">◆</span>
+              <span className="dot" aria-hidden="true">
+                ◆
+              </span>
               {c.event.followedBy}
             </p>
           </div>

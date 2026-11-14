@@ -95,7 +95,12 @@ export function Toran({ count = 25, className, style }: P & { count?: number }) 
           >
             <path d={LEAF} fill={i % 2 ? 'url(#g-leaf)' : 'url(#g-leaf-2)'} />
             <path d="M0 3 L0 46" stroke="#D8C07A" strokeWidth=".9" opacity=".75" />
-            <path d="M0 14 L5 10 M0 22 L-5 18 M0 30 L5 26 M0 38 L-4 34" stroke="#D8C07A" strokeWidth=".5" opacity=".5" />
+            <path
+              d="M0 14 L5 10 M0 22 L-5 18 M0 30 L5 26 M0 38 L-4 34"
+              stroke="#D8C07A"
+              strokeWidth=".5"
+              opacity=".5"
+            />
           </g>
         ),
       )}
@@ -119,8 +124,24 @@ export function JasmineStrand({ length = 14, className, style }: P & { length?: 
               <circle r="4.6" fill="url(#g-marigold)" />
             ) : (
               <>
-                <ellipse cx="-4" rx="3.4" ry="5.6" transform="rotate(-24 -4 0)" fill="url(#g-jasmine)" stroke="#E3D9C1" strokeWidth=".4" />
-                <ellipse cx="4" rx="3.4" ry="5.6" transform="rotate(24 4 0)" fill="url(#g-jasmine)" stroke="#E3D9C1" strokeWidth=".4" />
+                <ellipse
+                  cx="-4"
+                  rx="3.4"
+                  ry="5.6"
+                  transform="rotate(-24 -4 0)"
+                  fill="url(#g-jasmine)"
+                  stroke="#E3D9C1"
+                  strokeWidth=".4"
+                />
+                <ellipse
+                  cx="4"
+                  rx="3.4"
+                  ry="5.6"
+                  transform="rotate(24 4 0)"
+                  fill="url(#g-jasmine)"
+                  stroke="#E3D9C1"
+                  strokeWidth=".4"
+                />
                 <circle cy="-2" r="1.3" fill="#9BB37A" />
               </>
             )}
@@ -223,9 +244,17 @@ export function MandapamArch({ className, style }: P) {
         {[160, 230, 370, 440].map((x, i) => {
           const yy = i === 0 || i === 3 ? 150 : 96;
           return (
-            <g key={x} className="mandapam__bell" style={{ animationDelay: `${i * -0.8}s`, transformOrigin: `${x}px ${yy - 30}px` }}>
+            <g
+              key={x}
+              className="mandapam__bell"
+              style={{ animationDelay: `${i * -0.8}s`, transformOrigin: `${x}px ${yy - 30}px` }}
+            >
               <path d={`M${x} ${yy - 34} L${x} ${yy}`} strokeWidth=".8" />
-              <path d={`M${x - 7} ${yy + 12} Q${x - 7} ${yy} ${x} ${yy} Q${x + 7} ${yy} ${x + 7} ${yy + 12} Z`} fill="#C99A45" stroke="none" />
+              <path
+                d={`M${x - 7} ${yy + 12} Q${x - 7} ${yy} ${x} ${yy} Q${x + 7} ${yy} ${x + 7} ${yy + 12} Z`}
+                fill="#C99A45"
+                stroke="none"
+              />
               <circle cx={x} cy={yy + 15} r="2" fill="#C99A45" stroke="none" />
             </g>
           );
@@ -299,14 +328,20 @@ export function WaxSeal({ initials, className, style }: P & { initials: [string,
     <svg className={className} style={style} viewBox="0 0 120 120" aria-hidden="true">
       <defs>
         <radialGradient id="g-wax" cx=".38" cy=".32" r=".75">
-          <stop offset="0" stopColor="#9E2B3D" />
-          <stop offset=".6" stopColor="#701426" />
-          <stop offset="1" stopColor="#4A0B17" />
+          <stop offset="0" stopColor="#7A4C9E" />
+          <stop offset=".6" stopColor="#55307A" />
+          <stop offset="1" stopColor="#321A4A" />
         </radialGradient>
       </defs>
       <g transform="translate(60 60)">
         {petals.map((a) => (
-          <circle key={a} cx={Math.cos((a * Math.PI) / 180) * 47} cy={Math.sin((a * Math.PI) / 180) * 47} r="10" fill="url(#g-wax)" />
+          <circle
+            key={a}
+            cx={Math.cos((a * Math.PI) / 180) * 47}
+            cy={Math.sin((a * Math.PI) / 180) * 47}
+            r="10"
+            fill="url(#g-wax)"
+          />
         ))}
         <circle r="48" fill="url(#g-wax)" />
         <circle r="38" fill="none" stroke="#D9B86A" strokeWidth="1.2" opacity=".9" />
@@ -320,6 +355,25 @@ export function WaxSeal({ initials, className, style }: P & { initials: [string,
         <path d="M0 -14 L0 14" stroke="#D9B86A" strokeWidth=".8" />
         <ellipse cx="-14" cy="-20" rx="12" ry="6" fill="#fff" opacity=".07" transform="rotate(-30 -14 -20)" />
       </g>
+    </svg>
+  );
+}
+
+/* ── Tirunamam — Lord Venkateswara's sacred mark ──────────── */
+export function Namam({ className, style }: P) {
+  return (
+    <svg className={className} style={style} viewBox="0 0 40 48" aria-hidden="true">
+      <defs>
+        <linearGradient id="namam-gold" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#F3DFA2" />
+          <stop offset=".55" stopColor="#C99A45" />
+          <stop offset="1" stopColor="#A8792C" />
+        </linearGradient>
+      </defs>
+      {/* U-shaped white namam rendered in gold, with the red srichurnam at its centre */}
+      <path d="M6 2h7v22c0 6 3 10 7 10s7-4 7-10V2h7v22c0 11-6 18-14 18S6 35 6 24z" fill="url(#namam-gold)" />
+      <path d="M17.6 4h4.8v26c0 1.6-1 2.6-2.4 2.6s-2.4-1-2.4-2.6z" fill="#B23A48" />
+      <path d="M12 46h16" stroke="url(#namam-gold)" strokeWidth="1.4" strokeLinecap="round" />
     </svg>
   );
 }

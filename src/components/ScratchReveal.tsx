@@ -54,7 +54,7 @@ function paintFoil(ctx: CanvasRenderingContext2D, w: number, h: number) {
     ctx.fill();
   }
 
-  ctx.fillStyle = 'rgba(63, 10, 20, 0.55)';
+  ctx.fillStyle = 'rgba(44, 22, 64, 0.6)';
   ctx.font = `600 ${Math.round(w * 0.05)}px Jost, system-ui, sans-serif`;
   ctx.textAlign = 'center';
   ctx.fillText('SCRATCH HERE', w / 2, h * 0.44);

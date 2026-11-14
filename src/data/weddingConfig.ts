@@ -42,6 +42,9 @@ export const weddingConfig = {
   eventType: 'Engagement Invitation',
   heroEyebrow: 'Engagement Celebration',
 
+  /** Invocation shown at the very top of the invitation. Set to '' to hide. */
+  invocation: 'Om Namo Venkatesaya',
+
   /** Traditional Telugu blessing line shown above the invitation. Set to '' to hide. */
   teluguBlessing: 'శ్రీరస్తు  ·  శుభమస్తు  ·  అవిఘ్నమస్తు',
 

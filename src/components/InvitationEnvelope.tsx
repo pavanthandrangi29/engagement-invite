@@ -23,12 +23,7 @@ export default function InvitationEnvelope({ onOpen }: Props) {
   };
 
   return (
-    <div
-      className={`envelope-screen is-${phase}`}
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="env-title"
-    >
+    <div className={`envelope-screen is-${phase}`} role="dialog" aria-modal="true" aria-labelledby="env-title">
       <div className="envelope-screen__pattern" aria-hidden="true" />
       <div className="envelope-screen__glow" aria-hidden="true" />
 
@@ -62,6 +57,7 @@ export default function InvitationEnvelope({ onOpen }: Props) {
               <Corner className="corner--br" />
             </div>
             <div className="envelope__front-text">
+              {c.invocation && <p className="envelope__invocation">{c.invocation}</p>}
               <h1 id="env-title" className="envelope__title">
                 {c.familyTitle}
               </h1>
@@ -82,7 +78,13 @@ export default function InvitationEnvelope({ onOpen }: Props) {
           <WaxSeal className="envelope__seal" initials={[c.groom.name[0], c.bride.name[0]]} />
         </div>
 
-        <button ref={btnRef} type="button" className="btn btn--gold envelope__cta" onClick={open} disabled={phase !== 'closed'}>
+        <button
+          ref={btnRef}
+          type="button"
+          className="btn btn--gold envelope__cta"
+          onClick={open}
+          disabled={phase !== 'closed'}
+        >
           <span>Open Invitation</span>
         </button>
         <p className="envelope__hint">Tap the seal to open</p>
