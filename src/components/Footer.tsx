@@ -27,16 +27,6 @@ export default function Footer() {
         <p className="blessings__signoff">{k.signOff}</p>
         <p className="blessings__signature">{k.signature}</p>
       </div>
-
-      <div className="blessings__foot">
-        <span>{c.familyTitle}</span>
-        <span aria-hidden="true">◆</span>
-        <span>
-          {c.groom.name} &amp; {c.bride.name}
-        </span>
-        <span aria-hidden="true">◆</span>
-        <span>22 · 11 · 2026</span>
-      </div>
     </footer>
   );
 }

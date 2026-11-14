@@ -8,7 +8,6 @@ import {
   Ganesha,
   HangingLantern,
   Lotus,
-  SealSprig,
   Toran,
   WaxSeal,
 } from './Ornaments';
@@ -130,7 +129,6 @@ export default function InvitationEnvelope({ onOpen }: Props) {
             </svg>
           </div>
 
-          <SealSprig className="envelope__sprig" />
           <WaxSeal className="envelope__seal" initials={[c.groom.name[0], c.bride.name[0]]} />
 
           {/* Petal burst on open */}
