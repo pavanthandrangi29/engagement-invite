@@ -74,7 +74,7 @@ export default function InvitationEnvelope({ onOpen }: Props) {
           {/* Front pocket carries the names */}
           <div className="envelope__pocket">
             <svg className="envelope__folds" viewBox="0 0 100 100" preserveAspectRatio="none">
-              <path d="M0 0 L50 46 L100 0" />
+              <path d="M0 0 L50 38 L100 0" />
             </svg>
             <div className="envelope__front-frame">
               <Corner className="corner--bl" />
@@ -129,6 +129,7 @@ export default function InvitationEnvelope({ onOpen }: Props) {
             </svg>
           </div>
 
+          <div className="envelope__ribbon" aria-hidden="true" />
           <WaxSeal className="envelope__seal" initials={[c.groom.name[0], c.bride.name[0]]} />
 
           {/* Petal burst on open */}

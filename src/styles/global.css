@@ -22,6 +22,7 @@
   --f-serif: 'Cormorant Garamond', 'Georgia', serif;
   --f-sans: 'Jost', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --f-script: 'Pinyon Script', 'Cormorant Garamond', cursive;
+  --f-sign: 'Great Vibes', 'Pinyon Script', cursive;
   --f-telugu: 'Noto Serif Telugu', 'Gautami', serif;
 
   --gold-grad: linear-gradient(135deg, #f3dfa2 0%, #c99a45 42%, #a8792c 68%, #e7c878 100%);
@@ -461,7 +462,7 @@ button {
 }
 
 .envelope-stage {
-  --env-w: min(80vw, 370px, calc(54svh * 0.72));
+  --env-w: min(80vw, 370px, calc(54svh * 0.82));
   z-index: 4;
   position: relative;
   display: flex;
@@ -478,7 +479,7 @@ button {
 .envelope {
   position: relative;
   width: var(--env-w);
-  aspect-ratio: 0.72;
+  aspect-ratio: 0.82;
   perspective: 1400px;
   cursor: pointer;
   filter: drop-shadow(0 26px 34px rgba(90, 60, 120, 0.35));
@@ -519,7 +520,7 @@ button {
     var(--wash),
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='38' height='38' viewBox='0 0 38 38'%3E%3Cg fill='%23c29a4b' opacity='.13'%3E%3Cpath d='M19 6c3 4 3 7 0 9-3-2-3-5 0-9zm0 26c3-4 3-7 0-9-3 2-3 5 0 9zM6 19c4-3 7-3 9 0-2 3-5 3-9 0zm26 0c-4-3-7-3-9 0 2 3 5 3 9 0z'/%3E%3Ccircle cx='19' cy='19' r='1.6'/%3E%3Ccircle cx='0' cy='0' r='1.2'/%3E%3Ccircle cx='38' cy='0' r='1.2'/%3E%3Ccircle cx='0' cy='38' r='1.2'/%3E%3Ccircle cx='38' cy='38' r='1.2'/%3E%3C/g%3E%3C/svg%3E"),
     linear-gradient(170deg, #fffbf6 0%, #f8efe6 60%, #efe1d6 100%);
-  clip-path: polygon(0 0, 50% 46%, 100% 0, 100% 100%, 0 100%);
+  clip-path: polygon(0 0, 50% 38%, 100% 0, 100% 100%, 0 100%);
 }
 .envelope__folds {
   position: absolute;
@@ -538,7 +539,7 @@ button {
   position: absolute;
   left: 7%;
   right: 7%;
-  top: 52%;
+  top: 47%;
   bottom: 4.5%;
   border: 1px solid rgba(194, 154, 75, 0.75);
   outline: 1px solid rgba(194, 154, 75, 0.35);
@@ -569,7 +570,7 @@ button {
   position: absolute;
   left: 8%;
   right: 8%;
-  top: 61%;
+  top: 55%;
   bottom: 4.5%;
   display: flex;
   flex-direction: column;
@@ -578,9 +579,11 @@ button {
   text-align: center;
 }
 .envelope__names {
-  font-family: var(--f-script);
-  font-weight: 400;
-  font-size: calc(var(--env-w) * 0.098);
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-weight: 600;
+  font-size: calc(var(--env-w) * 0.1);
+  letter-spacing: 0.01em;
   line-height: 1.15;
   color: var(--maroon);
   white-space: nowrap;
@@ -588,11 +591,36 @@ button {
   flex-wrap: nowrap;
   justify-content: center;
   align-items: baseline;
-  gap: 0 0.18em;
+  gap: 0;
 }
 .envelope__amp {
+  font-family: var(--f-sign);
+  font-style: normal;
+  font-weight: 400;
   color: var(--gold);
-  font-size: 0.8em;
+  font-size: 0.95em;
+  margin: 0 0.32em;
+}
+/* Satin ribbon across the envelope, held by the seal */
+.envelope__ribbon {
+  position: absolute;
+  z-index: 5;
+  left: 0;
+  right: 0;
+  top: 40%;
+  height: calc(var(--env-w) * 0.07);
+  translate: 0 -50%;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0) 45%, rgba(90, 60, 130, 0.12)),
+    linear-gradient(90deg, #cdb6e6, #e6d8f4 30%, #d6c2ec 55%, #e9dcf6 75%, #cdb6e6);
+  border-top: 1px solid rgba(194, 154, 75, 0.8);
+  border-bottom: 1px solid rgba(194, 154, 75, 0.8);
+  box-shadow: 0 3px 6px -2px rgba(80, 50, 110, 0.3);
+  transition: opacity 0.4s ease;
+}
+.is-opening .envelope__ribbon,
+.is-leaving .envelope__ribbon {
+  opacity: 0;
 }
 .envelope__event {
   margin-top: calc(var(--env-w) * 0.014);
@@ -624,7 +652,7 @@ button {
   left: 0;
   right: 0;
   top: 0;
-  height: 50%;
+  height: 41%;
   z-index: 4;
   transform-origin: 50% 0;
   transform-style: preserve-3d;
@@ -689,7 +717,7 @@ button {
   position: absolute;
   z-index: 6;
   left: 50%;
-  top: 50%;
+  top: 40%;
   width: calc(var(--env-w) * 0.27);
   translate: -50% -50%;
   filter: drop-shadow(0 6px 8px rgba(30, 14, 46, 0.45));
@@ -711,7 +739,7 @@ button {
   left: 6%;
   right: 6%;
   top: 5%;
-  height: 88%;
+  height: 86%;
   z-index: 2;
   border-radius: 4px;
   background:
@@ -723,7 +751,7 @@ button {
 }
 .is-opening .envelope__card,
 .is-leaving .envelope__card {
-  transform: translateY(-56%);
+  transform: translateY(-50%);
 }
 .envelope__card-inner {
   position: absolute;
@@ -1779,9 +1807,9 @@ button {
 .venue__address {
   display: grid;
   font-style: normal;
-  font-family: var(--f-serif);
-  font-weight: 600;
-  font-size: clamp(1.2rem, 4.6vw, 1.45rem);
+  font-family: var(--f-sans);
+  font-weight: 400;
+  font-size: clamp(1.02rem, 4vw, 1.15rem);
   line-height: 1.45;
   color: var(--ink);
 }
@@ -1942,6 +1970,11 @@ button {
   font-family: var(--f-serif);
   font-size: 1.16rem;
   line-height: 1.4;
+}
+.route__value--address {
+  font-family: var(--f-sans);
+  font-size: 1rem;
+  line-height: 1.55;
 }
 .route__note {
   color: rgba(251, 246, 236, 0.7);
@@ -2234,7 +2267,7 @@ button {
   color: var(--gold-deep);
 }
 .blessings__signature {
-  font-family: var(--f-script);
+  font-family: var(--f-sign);
   white-space: nowrap;
   font-size: clamp(2.1rem, 8.4vw, 3.6rem);
   line-height: 1.2;

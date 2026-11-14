@@ -64,7 +64,7 @@ export default function DirectionsSection() {
             <MapPin className="route__icon route__icon--end" width={18} height={18} />
             <div>
               <p className="route__label">To</p>
-              <p className="route__value">{c.venue.addressOneLine}</p>
+              <p className="route__value route__value--address">{c.venue.addressOneLine}</p>
             </div>
           </li>
         </ol>
