@@ -49,7 +49,7 @@ function Gallery() {
 
   return (
     <section className="section gallery" id="gallery" aria-labelledby="gallery-title">
-      <SectionHeading numeral="IV" eyebrow="Moments" title="Gallery" id="gallery-title" />
+      <SectionHeading numeral="III" eyebrow="Moments" title="Gallery" id="gallery-title" />
 
       <ul className={`gallery__grid gallery__grid--${Math.min(items.length, 3)}`}>
         {items.map((it, i) => (

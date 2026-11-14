@@ -4,7 +4,6 @@ import HeroSection from './components/HeroSection';
 import CouplePortraits from './components/CouplePortraits';
 import FamilyInvitation from './components/FamilyInvitation';
 import ScratchReveal from './components/ScratchReveal';
-import EventDetails from './components/EventDetails';
 import VenueSection from './components/VenueSection';
 import PhotoGallery from './components/PhotoGallery';
 import Footer from './components/Footer';
@@ -41,7 +40,6 @@ export default function App() {
           <CouplePortraits />
           <FamilyInvitation />
           <ScratchReveal />
-          <EventDetails />
           <VenueSection />
           <PhotoGallery />
         </main>

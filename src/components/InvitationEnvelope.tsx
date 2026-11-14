@@ -87,8 +87,8 @@ export default function InvitationEnvelope({ onOpen }: Props) {
                 {c.bride.name}
               </h1>
               <Divider className="divider--sm" />
-              <p className="envelope__event">{c.eventType}</p>
               <p className="envelope__family">{c.familyTitle}</p>
+              <p className="envelope__event">{c.eventType}</p>
             </div>
           </div>
 

@@ -18,7 +18,7 @@ export default function VenueSection() {
 
   return (
     <section className="section venue" id="venue" aria-labelledby="venue-title">
-      <SectionHeading numeral="III" eyebrow="Where we gather" title={c.venue.heading} id="venue-title" />
+      <SectionHeading numeral="II" eyebrow="Where we gather" title={c.venue.heading} id="venue-title" />
 
       <div className="venue__card" data-reveal>
         <Corner className="corner--tl" />
