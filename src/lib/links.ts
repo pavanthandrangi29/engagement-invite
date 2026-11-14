@@ -4,17 +4,17 @@ import { weddingConfig as c } from '../data/weddingConfig';
 export const asset = (path: string) =>
   path ? `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}` : '';
 
-const q = encodeURIComponent(c.venue.addressOneLine);
+const { lat, lng } = c.venue.coordinates;
+/** Exact house pin as "lat,lng" — far more precise than the street address. */
+const q = `${lat},${lng}`;
 
 export const maps = {
   /** Keyless Google Maps embed (supported "output=embed" URL). */
-  overviewEmbed: `https://maps.google.com/maps?q=${q}&z=16&hl=en&output=embed`,
-  /** Satellite embed used as the honest fallback for the building view. */
-  satelliteEmbed: `https://maps.google.com/maps?q=${q}&t=k&z=19&hl=en&output=embed`,
+  overviewEmbed: `https://maps.google.com/maps?q=${q}&z=17&hl=en&output=embed`,
   /** Opens the venue — exact pin if provided, otherwise an address search. */
   open: c.venue.googleMapsShareLink || `https://www.google.com/maps/search/?api=1&query=${q}`,
-  /** Official Maps URLs API — opens turn-by-turn directions from the guest's location. */
-  directions: `https://www.google.com/maps/dir/?api=1&destination=${q}`,
+  /** Official Maps URLs API — turn-by-turn directions from the guest's location to the house pin. */
+  directions: `https://www.google.com/maps/dir/?api=1&destination=${q}&travelmode=driving`,
 };
 
 export const siteUrl = () => {

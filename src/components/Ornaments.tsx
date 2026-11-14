@@ -423,3 +423,89 @@ export function Namam({ className, style }: P) {
     </svg>
   );
 }
+
+/* ── Watercolour-style floral corner bouquet ───────────────── */
+export function FloralCorner({ className, style }: P) {
+  return (
+    <svg className={`floral-corner ${className ?? ''}`} style={style} viewBox="0 0 200 200" aria-hidden="true">
+      <g fill="none" stroke="#9FAF8F" strokeWidth="1.4" strokeLinecap="round" opacity=".85">
+        <path d="M0 0 C 40 30 70 60 96 112" />
+        <path d="M0 0 C 50 12 100 20 150 44" />
+        <path d="M0 0 C 14 46 20 96 30 150" />
+      </g>
+      <g opacity=".9">
+        {[
+          [44, 34, -30],
+          [70, 62, 20],
+          [104, 28, -60],
+          [26, 78, 10],
+          [130, 40, -20],
+          [22, 120, 30],
+          [84, 92, 40],
+        ].map(([x, y, r], i) => (
+          <ellipse
+            key={i}
+            cx={x}
+            cy={y}
+            rx="5"
+            ry="12"
+            transform={`rotate(${r} ${x} ${y})`}
+            fill={i % 2 ? '#B5C2A5' : '#94A884'}
+          />
+        ))}
+      </g>
+      <g className="floral-corner__sway">
+        <g transform="translate(40 40)">
+          <Blossom r={30} fill="url(#g-lav)" />
+        </g>
+        <g transform="translate(96 30)">
+          <Blossom r={18} fill="url(#g-blush)" />
+        </g>
+        <g transform="translate(28 100)">
+          <Blossom r={17} fill="url(#g-blush)" />
+        </g>
+        <g transform="translate(92 104)">
+          <Blossom r={13} fill="url(#g-lav)" />
+        </g>
+        <g transform="translate(146 46)">
+          <Blossom r={10} fill="url(#g-lav)" />
+        </g>
+        <g transform="translate(30 150)">
+          <Blossom r={9} fill="url(#g-lav)" />
+        </g>
+        {[
+          [70, 20],
+          [120, 64],
+          [58, 78],
+          [12, 130],
+          [160, 58],
+          [110, 120],
+          [50, 128],
+        ].map(([x, y], i) => (
+          <circle key={i} cx={x} cy={y} r={i % 3 ? 2.6 : 3.4} fill="url(#g-jasmine)" />
+        ))}
+      </g>
+    </svg>
+  );
+}
+
+/* ── Hanging brass lantern with a flickering flame ─────────── */
+export function HangingLantern({ className, style, drop = 90 }: P & { drop?: number }) {
+  return (
+    <svg className={`lantern ${className ?? ''}`} style={style} viewBox={`0 0 60 ${drop + 92}`} aria-hidden="true">
+      <line x1="30" y1="0" x2="30" y2={drop} stroke="url(#g-gold-v)" strokeWidth="1.4" strokeDasharray="3 2" />
+      <g transform={`translate(0 ${drop})`}>
+        <circle cx="30" cy="4" r="4" fill="none" stroke="url(#g-gold)" strokeWidth="1.6" />
+        <path d="M14 18 Q30 2 46 18 Z" fill="url(#g-gold)" />
+        <rect x="16" y="18" width="28" height="4" rx="1.5" fill="url(#g-gold-v)" />
+        <path d="M17 22 L43 22 L40 62 L20 62 Z" fill="#FFF3D6" opacity=".55" />
+        <circle className="lantern__glow" cx="30" cy="44" r="24" fill="url(#g-glow)" />
+        <path className="lantern__flame" d="M30 32 C 35 40 35 46 30 52 C 25 46 25 40 30 32 Z" fill="url(#g-flame)" />
+        <path d="M17 22 L20 62 M43 22 L40 62 M30 22 L30 30" stroke="url(#g-gold)" strokeWidth="1.6" fill="none" />
+        <rect x="16" y="62" width="28" height="5" rx="2" fill="url(#g-gold-v)" />
+        <path d="M22 67 L38 67 L30 80 Z" fill="url(#g-gold)" />
+        <circle cx="30" cy="86" r="3" fill="url(#g-gold)" />
+      </g>
+    </svg>
+  );
+}

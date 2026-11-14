@@ -98,24 +98,23 @@ export const weddingConfig = {
      */
     googleMapsShareLink: '',
     /**
-     * Nearby landmarks — add only ones you have verified.
-     * Example: { name: 'Gajuwaka Junction', note: 'about 2 km' }
+     * Exact pin of the house — 17°40'55.1"N 83°12'13.1"E.
+     * Directions and the map use these, so guests land on the right door.
      */
-    landmarks: [] as { name: string; note?: string }[],
-  },
-
-  /**
-   * MAP VIEW 3 — the actual building.
-   * In Google Maps: find the venue → drag the yellow Pegman onto the street
-   * in front of the building → face the entrance → Share → "Embed a map"
-   * → copy ONLY the src="…" URL and paste it below.
-   * Until then the section shows an honest satellite fallback.
-   */
-  buildingView: {
-    streetViewEmbedUrl: '',
-    /** Optional: a link straight into that Street View scene. */
-    streetViewLink: '',
-    entranceNote: '',
+    coordinates: { lat: 17.681972, lng: 83.203639 },
+    /** Nearby landmarks shown on the map and in "Getting There". */
+    landmarks: [
+      {
+        name: 'Opposite street of Modern Interio showroom',
+        note: 'Modular kitchens, wardrobes & interiors',
+        image: {
+          src: 'images/venue/landmark-modern-interio.webp',
+          alt: 'Modern Interio showroom front with its white signboard and red house logo',
+          width: 322,
+          height: 282,
+        },
+      },
+    ] as { name: string; note?: string; image?: ImageAsset }[],
   },
 
   // ── Contact ─────────────────────────────────────────────────

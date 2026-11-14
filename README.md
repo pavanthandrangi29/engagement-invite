@@ -2,7 +2,7 @@
 
 A luxury digital engagement invitation: envelope opening, royal Telugu styling,
 live countdown to **Sunday, 22 November 2026, 9:31 AM IST**, couple portraits, family
-invitation, event card, venue with three location experiences, photo gallery, final
+invitation, event card, venue with a pinned map, landmark and directions, photo gallery, final
 blessings and WhatsApp sharing.
 
 Built with **React 19 + TypeScript + Vite**, fully static, and deployed to **GitHub Pages**
@@ -22,26 +22,13 @@ Things you will most likely update:
 
 | What | Field |
 | --- | --- |
-| Exact Google Maps pin (e.g. `https://maps.app.goo.gl/…`) | `venue.googleMapsShareLink` |
-| Street View of the building (Map view 3) | `buildingView.streetViewEmbedUrl` |
-| A note on how to find the entrance | `buildingView.entranceNote` |
-| Verified nearby landmarks (Map view 2) | `venue.landmarks` |
-| Illustrated portraits | `groom.illustrated.src`, `bride.illustrated.src` |
-| Gallery photos | `gallery` |
+| House pin used by the map and every Directions button | `venue.coordinates` |
+| Nearby landmarks with an optional photo (shown on both map views) | `venue.landmarks` |
+| Illustrated couple artwork | `coupleIllustration` |
+| Invocation line at the top | `invocation` |
+| Gallery photos (section hidden while empty) | `gallery` |
 | Optional music (never autoplays) | `music.src` |
 | Published URL used in WhatsApp shares | `siteUrl` (blank = automatic) |
-
-### Adding the Street View of the building (Map view 3)
-
-1. Open the venue in Google Maps on a computer.
-2. Drag the yellow **Pegman** onto the road directly in front of the building and turn
-   to face the entrance.
-3. Click **Share → Embed a map → Copy HTML**.
-4. From the copied `<iframe …>` keep **only** the address inside `src="…"`
-   (it starts with `https://www.google.com/maps/embed?pb=…`).
-5. Paste it into `buildingView.streetViewEmbedUrl`.
-
-Until this is set, Map view 3 shows a clearly labelled satellite view of the address.
 
 ### Adding photos
 
@@ -117,7 +104,6 @@ src/
     LocationOverview.tsx       Map view 1 · embedded map
     DirectionsSection.tsx      Map view 2 · getting there
     PhotoGallery.tsx           Masonry + full-screen lightbox (swipe/keys)
-    BuildingView.tsx           Map view 3 · the actual building (final)
     Footer.tsx                 Final blessings
     WhatsAppShare.tsx, MusicToggle.tsx
     Ornaments.tsx              SVG toran, jasmine, lamp, mandapam, kolam

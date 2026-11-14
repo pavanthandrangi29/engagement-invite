@@ -164,7 +164,7 @@ export default function ScratchReveal() {
 
   return (
     <section className="section scratch" id="save-the-date" aria-labelledby="scratch-title">
-      <SectionHeading eyebrow="A little surprise" title="Scratch to Reveal" id="scratch-title" />
+      <SectionHeading title="Scratch to Reveal" id="scratch-title" />
 
       <div data-reveal>
         <div className={`scratch__heart ${revealed ? 'is-revealed' : ''}`}>

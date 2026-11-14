@@ -7,7 +7,6 @@ import ScratchReveal from './components/ScratchReveal';
 import EventDetails from './components/EventDetails';
 import VenueSection from './components/VenueSection';
 import PhotoGallery from './components/PhotoGallery';
-import BuildingView from './components/BuildingView';
 import Footer from './components/Footer';
 import WhatsAppShare from './components/WhatsAppShare';
 import MusicToggle from './components/MusicToggle';
@@ -45,7 +44,6 @@ export default function App() {
           <EventDetails />
           <VenueSection />
           <PhotoGallery />
-          <BuildingView />
         </main>
         <Footer />
         {opened && (
