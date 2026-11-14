@@ -777,8 +777,8 @@ button {
   text-align: center;
 }
 .envelope-intro__mark {
-  width: 24px;
-  height: 29px;
+  width: auto;
+  height: clamp(40px, 6svh, 52px);
 }
 .envelope-intro__invocation {
   font-family: var(--f-serif);
@@ -984,9 +984,8 @@ button {
   margin-bottom: 18px;
 }
 .invocation__mark {
-  width: 30px;
-  height: 36px;
-  filter: drop-shadow(0 2px 3px rgba(156, 116, 48, 0.35));
+  width: auto;
+  height: 56px;
 }
 .invocation__text {
   font-family: var(--f-serif);

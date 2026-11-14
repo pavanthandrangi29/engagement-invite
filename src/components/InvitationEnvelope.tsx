@@ -5,9 +5,9 @@ import {
   Divider,
   FallingPetals,
   FloralCorner,
+  Ganesha,
   HangingLantern,
   Lotus,
-  Namam,
   Toran,
   WaxSeal,
 } from './Ornaments';
@@ -47,7 +47,7 @@ export default function InvitationEnvelope({ onOpen }: Props) {
         <header className="envelope-intro">
           {c.invocation && (
             <>
-              <Namam className="envelope-intro__mark" />
+              <Ganesha className="envelope-intro__mark" />
               <p className="envelope-intro__invocation">{c.invocation}</p>
             </>
           )}

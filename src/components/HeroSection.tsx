@@ -3,7 +3,7 @@ import { si } from '../lib/style';
 import Countdown from './Countdown';
 import GoldParticles from './GoldParticles';
 import { ChevronDown } from './Icons';
-import { BrassLamp, Divider, FallingPetals, JasmineStrand, MandapamArch, Namam, Toran } from './Ornaments';
+import { BrassLamp, Divider, FallingPetals, JasmineStrand, MandapamArch, Ganesha, Toran } from './Ornaments';
 
 export default function HeroSection() {
   return (
@@ -22,7 +22,7 @@ export default function HeroSection() {
         <div className="hero__content">
           {c.invocation && (
             <div className="invocation stagger" style={si(0)}>
-              <Namam className="invocation__mark" />
+              <Ganesha className="invocation__mark" />
               <p className="invocation__text">{c.invocation}</p>
             </div>
           )}

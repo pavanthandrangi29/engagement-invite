@@ -3,6 +3,7 @@
  * mandapam arch, lotus dividers and kolam corners. All vector, all tiny.
  */
 import type { CSSProperties } from 'react';
+import { asset } from '../lib/links';
 
 type P = { className?: string; style?: CSSProperties };
 
@@ -507,5 +508,21 @@ export function HangingLantern({ className, style, drop = 90 }: P & { drop?: num
         <circle cx="30" cy="86" r="3" fill="url(#g-gold)" />
       </g>
     </svg>
+  );
+}
+
+/* ── Lord Ganesha line art, shown above the invocation ─────── */
+export function Ganesha({ className, style }: P) {
+  return (
+    <img
+      className={className}
+      style={style}
+      src={asset('images/ganesha.png')}
+      alt=""
+      aria-hidden="true"
+      width={294}
+      height={348}
+      decoding="async"
+    />
   );
 }
