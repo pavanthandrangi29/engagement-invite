@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { weddingConfig as c } from '../data/weddingConfig';
-import { GoldSwoosh, LeafLine, LilyBouquet, OrganicSeal, TempleArch, Wisteria } from './EnvelopeArt';
+import { GoldSwoosh, LeafLine, LilyBouquet, OrganicSeal, TempleArch, FloralSpray } from './EnvelopeArt';
 import { Corner, FallingPetals, Ganesha, HangingLantern, Lotus } from './Ornaments';
 
 type Props = { onOpen: () => void };
@@ -42,8 +42,8 @@ export default function InvitationEnvelope({ onOpen }: Props) {
     <div className={`envelope-screen is-${phase}`} role="dialog" aria-modal="true" aria-labelledby="env-title">
       <div className="envelope-screen__glow" aria-hidden="true" />
 
-      <Wisteria className="envelope-screen__wisteria envelope-screen__wisteria--l" />
-      <Wisteria className="envelope-screen__wisteria envelope-screen__wisteria--r" />
+      <FloralSpray className="envelope-screen__spray envelope-screen__spray--l" />
+      <FloralSpray className="envelope-screen__spray envelope-screen__spray--r" />
       <HangingLantern className="envelope-screen__lantern envelope-screen__lantern--l" drop={70} />
       <HangingLantern className="envelope-screen__lantern envelope-screen__lantern--r" drop={150} />
       <LilyBouquet className="envelope-screen__bouquet envelope-screen__bouquet--l" />

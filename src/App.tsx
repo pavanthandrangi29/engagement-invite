@@ -9,6 +9,7 @@ import PhotoGallery from './components/PhotoGallery';
 import Footer from './components/Footer';
 import WhatsAppShare from './components/WhatsAppShare';
 import MusicToggle from './components/MusicToggle';
+import ScrollHint from './components/ScrollHint';
 import { OrnamentDefs } from './components/Ornaments';
 import { useReveal } from './hooks/useReveal';
 
@@ -48,6 +49,7 @@ export default function App() {
           <>
             <WhatsAppShare />
             <MusicToggle />
+            <ScrollHint />
           </>
         )}
       </div>

@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react';
 
 /**
- * Artwork for the opening screen: wisteria, lilies, the temple arch,
+ * Artwork for the opening screen: floral sprays, lilies, the temple arch,
  * an organic wax seal, fine leaf line-art and gold swooshes.
  * Gradients like #g-gold / #g-lav / #g-jasmine come from <OrnamentDefs />.
  */
@@ -14,81 +14,113 @@ const LIGHT = [240, 230, 250];
 const MID = [196, 168, 226];
 const DEEP = [132, 98, 180];
 
-/* ── Hanging wisteria (top-left; mirror with CSS for the right) ── */
-const RACEMES: [number, number, number, number][] = [
-  // x, top y, florets, scale
-  [14, 24, 20, 1],
-  [40, 20, 26, 1.12],
-  [66, 16, 15, 0.9],
-  [92, 14, 23, 1.06],
-  [122, 12, 12, 0.85],
-  [150, 10, 19, 1],
-  [182, 8, 9, 0.8],
-  [208, 7, 14, 0.9],
-];
-
-export function Wisteria({ className, style }: P) {
+/* ── Cascading floral spray (top-left; mirror with CSS for the right) ── */
+function Peony({ r, tone }: { r: number; tone: 'lav' | 'blush' }) {
+  const outer = tone === 'lav' ? 'url(#g-lav)' : 'url(#g-blush)';
+  const inner = tone === 'lav' ? '#EADCF7' : '#FCE6EF';
+  const rings: [number, number, number, string][] = [
+    // petals, distance, size, fill
+    [8, 0.62, 0.5, outer],
+    [7, 0.4, 0.42, inner],
+    [5, 0.18, 0.3, outer],
+  ];
   return (
-    <svg className={`wisteria ${className ?? ''}`} style={style} viewBox="0 0 230 320" aria-hidden="true">
-      <path d="M-6 26 C 50 14 120 10 236 4" fill="none" stroke="#8C7A5E" strokeWidth="3" strokeLinecap="round" />
-      <path d="M40 18 C 60 30 70 34 92 30" fill="none" stroke="#8C7A5E" strokeWidth="1.6" strokeLinecap="round" />
-      {RACEMES.map(([x, y0, n, k], ri) => (
-        <g
-          key={ri}
-          className="wisteria__raceme"
-          style={{ animationDelay: `${-ri * 0.9}s`, transformOrigin: `${x}px ${y0}px` }}
-        >
-          {Array.from({ length: n }, (_, i) => {
-            const t = i / (n - 1);
-            const r = (8.2 - t * 5.4) * k;
-            const yy = y0 + 6 + i * 7.2 * k;
-            const sway = Math.sin(i * 0.7 + ri) * 1.6;
-            const c = t < 0.5 ? mix(LIGHT, MID, t * 2) : mix(MID, DEEP, (t - 0.5) * 2);
-            const side = i % 2 ? 1 : -1;
-            return (
-              <g key={i}>
-                <ellipse
-                  cx={x + sway + side * r * 0.55}
-                  cy={yy}
-                  rx={r * 0.78}
-                  ry={r * 0.6}
-                  transform={`rotate(${side * 18} ${x + sway + side * r * 0.55} ${yy})`}
-                  fill={c}
-                />
-                <ellipse
-                  cx={x + sway - side * r * 0.5}
-                  cy={yy + 2.4}
-                  rx={r * 0.7}
-                  ry={r * 0.56}
-                  fill={c}
-                  opacity=".92"
-                />
-                <circle cx={x + sway + side * r * 0.35} cy={yy - 1.4} r={r * 0.2} fill="#fff" opacity=".6" />
-              </g>
-            );
-          })}
-        </g>
-      ))}
-      {[
-        [26, 22, -30],
-        [54, 15, 20],
-        [80, 13, -20],
-        [106, 11, 30],
-        [136, 9, -24],
-        [166, 7, 26],
-        [196, 6, -18],
-        [222, 5, 22],
-      ].map(([x, y, r], i) => (
-        <ellipse
-          key={i}
-          cx={x}
-          cy={y}
-          rx="4.6"
-          ry="12"
-          transform={`rotate(${r + 90} ${x} ${y})`}
-          fill={i % 2 ? '#A9B79A' : '#8FA37E'}
+    <g className="spray__bloom">
+      {rings.map(([n, d, sz, fill], ri) =>
+        Array.from({ length: n }, (_, i) => {
+          const a = (i / n) * 360 + ri * 22;
+          return (
+            <ellipse
+              key={`${ri}-${i}`}
+              cx="0"
+              cy={-r * d}
+              rx={r * sz * 0.85}
+              ry={r * sz}
+              transform={`rotate(${a})`}
+              fill={fill}
+              stroke="#fff"
+              strokeWidth=".5"
+              strokeOpacity=".6"
+            />
+          );
+        }),
+      )}
+      <circle r={r * 0.14} fill="url(#g-gold)" />
+    </g>
+  );
+}
+
+function Leaf({ x, y, r, s = 1, light }: { x: number; y: number; r: number; s?: number; light?: boolean }) {
+  return (
+    <g transform={`translate(${x} ${y}) rotate(${r}) scale(${s})`}>
+      <path d="M0 0 C 8 -8 22 -8 32 0 C 22 8 8 8 0 0 Z" fill={light ? '#B9C6A8' : '#93A882'} />
+      <path d="M2 0 L 28 0" stroke="#7E9470" strokeWidth=".6" opacity=".6" />
+    </g>
+  );
+}
+
+export function FloralSpray({ className, style }: P) {
+  return (
+    <svg className={`spray ${className ?? ''}`} style={style} viewBox="0 0 240 260" aria-hidden="true">
+      <g className="spray__branch">
+        <path
+          d="M-4 6 C 50 20 90 40 118 86 C 134 112 140 150 136 196"
+          fill="none"
+          stroke="#8C7A5E"
+          strokeWidth="2"
+          strokeLinecap="round"
         />
-      ))}
+        <path d="M60 22 C 110 24 160 18 214 4" fill="none" stroke="#8C7A5E" strokeWidth="1.6" strokeLinecap="round" />
+        <path d="M100 60 C 72 92 56 126 52 170" fill="none" stroke="#8C7A5E" strokeWidth="1.2" strokeLinecap="round" />
+        <Leaf x={30} y={14} r={20} />
+        <Leaf x={84} y={36} r={50} light />
+        <Leaf x={120} y={98} r={110} s={0.9} />
+        <Leaf x={132} y={150} r={70} light s={0.8} />
+        <Leaf x={150} y={18} r={-20} s={0.9} />
+        <Leaf x={190} y={9} r={-30} light s={0.8} />
+        <Leaf x={70} y={120} r={120} s={0.8} light />
+        <Leaf x={58} y={20} r={-150} s={0.7} />
+
+        <g transform="translate(46 30)">
+          <Peony r={30} tone="lav" />
+        </g>
+        <g transform="translate(108 64)">
+          <Peony r={22} tone="blush" />
+        </g>
+        <g transform="translate(136 130)">
+          <Peony r={17} tone="lav" />
+        </g>
+        <g transform="translate(170 18)">
+          <Peony r={15} tone="blush" />
+        </g>
+        <g transform="translate(58 150)">
+          <Peony r={13} tone="blush" />
+        </g>
+        <g transform="translate(138 196)">
+          <Peony r={10} tone="lav" />
+        </g>
+        {[
+          [214, 6, 'lav'],
+          [52, 176, 'lav'],
+          [92, 104, 'blush'],
+          [16, 52, 'blush'],
+        ].map(([x, y, t], i) => (
+          <g key={i} transform={`translate(${x} ${y})`}>
+            <ellipse rx="4.5" ry="6.5" fill={t === 'lav' ? 'url(#g-lav)' : 'url(#g-blush)'} />
+            <path d="M-4 3 Q0 9 4 3" fill="#93A882" />
+          </g>
+        ))}
+        {[
+          [24, 74],
+          [86, 12],
+          [128, 36],
+          [158, 100],
+          [100, 150],
+          [196, 30],
+        ].map(([x, y], i) => (
+          <circle key={i} cx={x} cy={y} r={i % 2 ? 2.2 : 2.8} fill="url(#g-jasmine)" />
+        ))}
+      </g>
     </svg>
   );
 }
