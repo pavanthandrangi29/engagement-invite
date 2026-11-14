@@ -6,12 +6,26 @@ import { Landmark, MapPin, Navigation } from './Icons';
 export default function DirectionsSection() {
   const marks = c.venue.landmarks;
   return (
-    <div className="mapview mapview--directions" data-reveal>
-      <div className="mapview__head">
-        <h3 className="mapview__title">Getting There</h3>
-      </div>
+    <div className="mapview mapview--directions" aria-label="Getting there" data-reveal>
 
       <div className="route">
+        <svg className="route__art" viewBox="0 0 320 120" aria-hidden="true">
+          <path
+            className="route__path"
+            d="M24 92 C 80 92 84 28 140 34 C 196 40 196 96 252 86 C 276 82 288 60 296 44"
+            fill="none"
+          />
+          <circle cx="24" cy="92" r="7" className="route__start" />
+          <circle cx="24" cy="92" r="13" className="route__start-ring" />
+          <g transform="translate(296 44)">
+            <path
+              d="M0 -24 C 9 -24 13 -17 13 -11 C 13 -2 0 8 0 8 C 0 8 -13 -2 -13 -11 C -13 -17 -9 -24 0 -24 Z"
+              className="route__pin"
+            />
+            <circle cy="-11" r="4" fill="#FBF6EC" />
+          </g>
+        </svg>
+
         <ol className="route__steps">
           <li>
             <span className="route__dot route__dot--start" aria-hidden="true" />

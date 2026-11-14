@@ -2724,7 +2724,11 @@ button {
   font-size: clamp(1.6rem, 6vw, 2.1rem);
 }
 .venue .route {
-  padding: 20px clamp(16px, 4.5vw, 32px) 20px;
+  padding: 14px clamp(16px, 4.5vw, 32px) 20px;
+}
+.venue .route__art {
+  max-width: 250px;
+  margin-bottom: 4px;
 }
 .venue .route__steps {
   gap: 12px;
