@@ -1,5 +1,5 @@
 import { weddingConfig as c } from '../data/weddingConfig';
-import { Divider, FallingPetals, Lotus, Toran } from './Ornaments';
+import { Divider, FallingPetals, FloralCorner, Lotus, Toran } from './Ornaments';
 
 /** Final blessings + footer, with drifting petals. */
 export default function Footer() {
@@ -10,6 +10,8 @@ export default function Footer() {
       <FallingPetals className="blessings__petals" />
 
       <div className="blessings__inner" data-reveal>
+        <FloralCorner className="blessings__flora blessings__flora--tl" />
+        <FloralCorner className="blessings__flora blessings__flora--br" />
         <Lotus className="blessings__lotus" />
         <h2 className="blessings__title" id="blessings-title">
           {k.headingLines.map((l) => (

@@ -8,6 +8,7 @@ import {
   Ganesha,
   HangingLantern,
   Lotus,
+  SealSprig,
   Toran,
   WaxSeal,
 } from './Ornaments';
@@ -80,6 +81,8 @@ export default function InvitationEnvelope({ onOpen }: Props) {
               <Corner className="corner--bl" />
               <Corner className="corner--br" />
             </div>
+            <FloralCorner className="envelope__flora envelope__flora--bl" />
+            <FloralCorner className="envelope__flora envelope__flora--br" />
             <div className="envelope__front-text">
               <h1 id="env-title" className="envelope__names">
                 {c.groom.name}
@@ -99,14 +102,35 @@ export default function InvitationEnvelope({ onOpen }: Props) {
                   <stop offset="0" stopColor="#E9DCF5" />
                   <stop offset="1" stopColor="#CDB6E6" />
                 </linearGradient>
+                {/* tiny white blossoms printed on the lavender liner */}
+                <pattern id="p-liner" width="7" height="7" patternUnits="userSpaceOnUse">
+                  <g fill="#fff" opacity=".55">
+                    <circle cx="3.5" cy="2.4" r=".75" />
+                    <circle cx="2.4" cy="3.6" r=".75" />
+                    <circle cx="4.6" cy="3.6" r=".75" />
+                    <circle cx="3.5" cy="4.6" r=".75" />
+                  </g>
+                  <circle cx="3.5" cy="3.5" r=".5" fill="#E2C47A" />
+                </pattern>
+                <pattern id="p-damask" width="10" height="10" patternUnits="userSpaceOnUse">
+                  <path
+                    d="M5 1.5 C6.2 3.3 6.2 4.2 5 5 C3.8 4.2 3.8 3.3 5 1.5 Z M5 8.5 C6.2 6.7 6.2 5.8 5 5 C3.8 5.8 3.8 6.7 5 8.5 Z M1.5 5 C3.3 3.8 4.2 3.8 5 5 C4.2 6.2 3.3 6.2 1.5 5 Z M8.5 5 C6.7 3.8 5.8 3.8 5 5 C5.8 6.2 6.7 6.2 8.5 5 Z"
+                    fill="#C29A4B"
+                    opacity=".09"
+                  />
+                </pattern>
               </defs>
               <polygon points="0,0 100,0 50,100" fill="url(#g-liner)" />
-              <polygon points="5,0 95,0 50,88" className="envelope__flap-fill" />
+              <polygon points="0,0 100,0 50,100" fill="url(#p-liner)" />
+              <polygon points="6,0 94,0 50,86" className="envelope__flap-fill" />
+              <polygon points="6,0 94,0 50,86" fill="url(#p-damask)" />
               <polyline points="0,0 50,100 100,0" className="envelope__flap-edge" />
-              <polyline points="5,0 50,88 95,0" className="envelope__flap-edge envelope__flap-edge--inner" />
+              <polyline points="6,0 50,86 94,0" className="envelope__flap-edge envelope__flap-edge--inner" />
+              <polyline points="10,0 50,79 90,0" className="envelope__flap-stitch" />
             </svg>
           </div>
 
+          <SealSprig className="envelope__sprig" />
           <WaxSeal className="envelope__seal" initials={[c.groom.name[0], c.bride.name[0]]} />
 
           {/* Petal burst on open */}

@@ -517,6 +517,7 @@ button {
   background:
     var(--paper),
     var(--wash),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='38' height='38' viewBox='0 0 38 38'%3E%3Cg fill='%23c29a4b' opacity='.13'%3E%3Cpath d='M19 6c3 4 3 7 0 9-3-2-3-5 0-9zm0 26c3-4 3-7 0-9-3 2-3 5 0 9zM6 19c4-3 7-3 9 0-2 3-5 3-9 0zm26 0c-4-3-7-3-9 0 2 3 5 3 9 0z'/%3E%3Ccircle cx='19' cy='19' r='1.6'/%3E%3Ccircle cx='0' cy='0' r='1.2'/%3E%3Ccircle cx='38' cy='0' r='1.2'/%3E%3Ccircle cx='0' cy='38' r='1.2'/%3E%3Ccircle cx='38' cy='38' r='1.2'/%3E%3C/g%3E%3C/svg%3E"),
     linear-gradient(170deg, #fffbf6 0%, #f8efe6 60%, #efe1d6 100%);
   clip-path: polygon(0 0, 50% 46%, 100% 0, 100% 100%, 0 100%);
 }
@@ -651,6 +652,52 @@ button {
   stroke-width: 0.6;
   opacity: 0.6;
 }
+.envelope__flap-stitch {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+  vector-effect: non-scaling-stroke;
+  opacity: 0.7;
+}
+
+/* Flowers tucked behind the seal */
+.envelope__sprig {
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  top: 50%;
+  width: calc(var(--env-w) * 0.66);
+  translate: -50% -66%;
+  pointer-events: none;
+  filter: drop-shadow(0 3px 4px rgba(90, 60, 120, 0.25));
+  transition:
+    opacity 0.4s ease,
+    transform 0.5s var(--ease);
+}
+.is-opening .envelope__sprig,
+.is-leaving .envelope__sprig {
+  opacity: 0;
+  transform: scale(1.2);
+}
+
+/* Little bouquets in the pocket's bottom corners */
+.envelope__flora {
+  position: absolute;
+  width: calc(var(--env-w) * 0.24);
+  height: auto;
+  pointer-events: none;
+}
+.envelope__flora--bl {
+  left: 0;
+  bottom: 0;
+  transform: rotate(-90deg);
+}
+.envelope__flora--br {
+  right: 0;
+  bottom: 0;
+  transform: rotate(180deg);
+}
 .is-opening .envelope__flap,
 .is-leaving .envelope__flap {
   transform: rotateX(180deg);
@@ -659,7 +706,7 @@ button {
 
 .envelope__seal {
   position: absolute;
-  z-index: 5;
+  z-index: 6;
   left: 50%;
   top: 50%;
   width: calc(var(--env-w) * 0.27);
@@ -809,7 +856,7 @@ button {
   position: absolute;
   left: 50%;
   top: 50%;
-  z-index: 6;
+  z-index: 7;
   pointer-events: none;
 }
 .env-burst__petal {
@@ -2249,8 +2296,33 @@ button {
 }
 .blessings__inner {
   position: relative;
-  max-width: 640px;
+  max-width: 600px;
   margin: 0 auto;
+  padding: clamp(40px, 9vw, 64px) clamp(22px, 6vw, 56px) clamp(36px, 8vw, 56px);
+  border-radius: 22px;
+  background:
+    var(--paper),
+    radial-gradient(120% 90% at 50% 0%, #fffdf9 0%, #fbf4f2 60%, #f3e9f2 100%);
+  border: 1px solid rgba(194, 154, 75, 0.75);
+  outline: 1px solid rgba(255, 246, 220, 0.55);
+  outline-offset: 6px;
+  box-shadow: 0 40px 70px -40px rgba(30, 14, 46, 0.65);
+  color: var(--ink);
+}
+.blessings__flora {
+  position: absolute;
+  width: clamp(96px, 26vw, 150px);
+  height: auto;
+  pointer-events: none;
+}
+.blessings__flora--tl {
+  top: -14px;
+  left: -14px;
+}
+.blessings__flora--br {
+  bottom: -14px;
+  right: -14px;
+  transform: rotate(180deg);
 }
 .blessings__lotus {
   width: 70px;
@@ -2264,18 +2336,14 @@ button {
   letter-spacing: 0.1em;
   line-height: 1.3;
   text-transform: uppercase;
-  /* lighter gold so it stays crisp on the lavender ground */
-  background: linear-gradient(135deg, #fff6d8 0%, #f3dc9e 45%, #e9c97a 70%, #fff1c8 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  filter: drop-shadow(0 1px 1px rgba(60, 35, 90, 0.45));
+  color: var(--maroon);
 }
 .blessings__body {
   font-family: var(--f-serif);
   font-size: clamp(1.15rem, 4.4vw, 1.35rem);
   line-height: 1.6;
-  color: rgba(251, 246, 236, 0.9);
+  font-weight: 500;
+  color: var(--ink);
 }
 .blessings__body + .blessings__body {
   margin-top: 12px;
@@ -2284,14 +2352,15 @@ button {
   margin-top: 36px;
   font-family: var(--f-serif);
   font-style: italic;
-  font-size: 1.2rem;
-  color: rgba(231, 205, 140, 0.9);
+  font-size: 1.25rem;
+  color: var(--gold-deep);
 }
 .blessings__signature {
   font-family: var(--f-script);
-  font-size: clamp(2.6rem, 11vw, 3.8rem);
+  white-space: nowrap;
+  font-size: clamp(2.1rem, 8.4vw, 3.6rem);
   line-height: 1.2;
-  color: var(--gold-light);
+  color: var(--maroon);
 }
 .blessings__foot {
   position: relative;
@@ -2300,10 +2369,12 @@ button {
   justify-content: center;
   gap: 10px 14px;
   margin-top: 80px;
-  font-size: 0.68rem;
-  letter-spacing: 0.3em;
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: rgba(231, 205, 140, 0.6);
+  color: #fff8ea;
+  text-shadow: 0 1px 2px rgba(40, 20, 60, 0.45);
 }
 
 /* ════════════════════════════════════════════════════════════
