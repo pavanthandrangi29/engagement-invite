@@ -8,12 +8,6 @@ import type { CSSProperties } from 'react';
 
 type P = { className?: string; style?: CSSProperties };
 
-const mix = (a: number[], b: number[], t: number) =>
-  `rgb(${a.map((v, i) => Math.round(v + (b[i] - v) * t)).join(',')})`;
-const LIGHT = [240, 230, 250];
-const MID = [196, 168, 226];
-const DEEP = [132, 98, 180];
-
 /* ── Cascading floral spray (top-left; mirror with CSS for the right) ── */
 function Peony({ r, tone }: { r: number; tone: 'lav' | 'blush' }) {
   const outer = tone === 'lav' ? 'url(#g-lav)' : 'url(#g-blush)';
