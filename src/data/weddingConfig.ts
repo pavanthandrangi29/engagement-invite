@@ -128,17 +128,18 @@ export const weddingConfig = {
    * Published URL, e.g. https://<username>.github.io/<repo>/
    * Leave '' to use the address the guest opened automatically.
    */
-  siteUrl: '',
+  siteUrl: 'https://tinyurl.com/harsha-engagement-invite',
+  /** Text sent by the WhatsApp button. {link} is replaced with siteUrl. */
   whatsappMessage: [
-    'With great joy, we invite you to the engagement celebration of Harsha & Jayasree.',
+    'With immense joy and happiness, we invite you to celebrate the engagement of Harsha & Jayasree! 💜',
     '',
-    'Date: Sunday, 22 November 2026',
-    'Time: 9:31 AM onwards',
-    'Followed by Lunch',
+    'Your presence and blessings would make our special day even more memorable.',
     '',
-    'Venue: 26-55-5, Vinayaka Temple Street, Prasanthi Nagar, Kanithi Road, Gajuwaka, Visakhapatnam.',
+    'All event details and location directions are in the invitation below.',
     '',
-    'We look forward to your presence and blessings!',
+    '💌 {link}',
+    '',
+    'Looking forward to celebrating with you!',
   ].join('\n'),
 
   // ── Music (optional, never autoplays) ───────────────────────

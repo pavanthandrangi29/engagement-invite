@@ -22,8 +22,12 @@ export const siteUrl = () => {
   return origin + pathname;
 };
 
-export const whatsappShareUrl = () =>
-  `https://wa.me/?text=${encodeURIComponent(`${c.whatsappMessage}\n\n${siteUrl()}`)}`;
+export const whatsappShareUrl = () => {
+  const msg = c.whatsappMessage.includes('{link}')
+    ? c.whatsappMessage.replace('{link}', siteUrl())
+    : `${c.whatsappMessage}\n\n${siteUrl()}`;
+  return `https://wa.me/?text=${encodeURIComponent(msg)}`;
+};
 
 export async function copyText(text: string): Promise<boolean> {
   try {
