@@ -3,6 +3,7 @@ import InvitationEnvelope from './components/InvitationEnvelope';
 import HeroSection from './components/HeroSection';
 import CouplePortraits from './components/CouplePortraits';
 import FamilyInvitation from './components/FamilyInvitation';
+import ScratchReveal from './components/ScratchReveal';
 import EventDetails from './components/EventDetails';
 import VenueSection from './components/VenueSection';
 import PhotoGallery from './components/PhotoGallery';
@@ -40,6 +41,7 @@ export default function App() {
         <main>
           <CouplePortraits />
           <FamilyInvitation />
+          <ScratchReveal />
           <EventDetails />
           <VenueSection />
           <PhotoGallery />
