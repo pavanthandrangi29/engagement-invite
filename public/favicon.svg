@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F3DFA2"/><stop offset=".5" stop-color="#C99A45"/><stop offset="1" stop-color="#E7C878"/></linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="31" fill="#6B1424"/>
+  <circle cx="32" cy="32" r="27" fill="none" stroke="url(#g)" stroke-width="1.5"/>
+  <g fill="none" stroke="url(#g)" stroke-width="1.6" stroke-linejoin="round">
+    <path d="M32 14 C 38 21 38 30 32 37 C 26 30 26 21 32 14 Z"/>
+    <path d="M32 37 C 25 34 20 29 19 21 C 26 22 30 28 32 37 Z"/>
+    <path d="M32 37 C 39 34 44 29 45 21 C 38 22 34 28 32 37 Z"/>
+  </g>
+  <text x="32" y="52" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#E7CD8C" letter-spacing="1">H · J</text>
+</svg>

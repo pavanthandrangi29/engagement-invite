@@ -1,0 +1,325 @@
+/**
+ * Hand-built SVG ornaments — mango-leaf toran, jasmine strands, brass lamp,
+ * mandapam arch, lotus dividers and kolam corners. All vector, all tiny.
+ */
+import type { CSSProperties } from 'react';
+
+type P = { className?: string; style?: CSSProperties };
+
+/** Shared gradients — rendered once near the top of the document. */
+export function OrnamentDefs() {
+  return (
+    <svg width="0" height="0" aria-hidden="true" style={{ position: 'absolute' }}>
+      <defs>
+        <linearGradient id="g-gold" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#F3DFA2" />
+          <stop offset=".45" stopColor="#C99A45" />
+          <stop offset=".7" stopColor="#A8792C" />
+          <stop offset="1" stopColor="#E7C878" />
+        </linearGradient>
+        <linearGradient id="g-gold-v" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#F6E3A6" />
+          <stop offset=".5" stopColor="#C3913C" />
+          <stop offset="1" stopColor="#8E6421" />
+        </linearGradient>
+        <linearGradient id="g-leaf" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#3C7A4E" />
+          <stop offset=".6" stopColor="#1F4D33" />
+          <stop offset="1" stopColor="#163A27" />
+        </linearGradient>
+        <linearGradient id="g-leaf-2" x1="1" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#5E8F4A" />
+          <stop offset="1" stopColor="#24563A" />
+        </linearGradient>
+        <radialGradient id="g-marigold" cx=".4" cy=".35" r=".7">
+          <stop offset="0" stopColor="#FFD27A" />
+          <stop offset=".6" stopColor="#F0A12E" />
+          <stop offset="1" stopColor="#C46D12" />
+        </radialGradient>
+        <radialGradient id="g-jasmine" cx=".4" cy=".3" r=".8">
+          <stop offset="0" stopColor="#FFFFFF" />
+          <stop offset=".7" stopColor="#F6F1E4" />
+          <stop offset="1" stopColor="#DCD3BC" />
+        </radialGradient>
+        <radialGradient id="g-flame" cx=".5" cy=".75" r=".75">
+          <stop offset="0" stopColor="#FFF8D6" />
+          <stop offset=".35" stopColor="#FFD35C" />
+          <stop offset=".75" stopColor="#F28A1B" />
+          <stop offset="1" stopColor="#D2560F" stopOpacity="0" />
+        </radialGradient>
+        <radialGradient id="g-glow" cx=".5" cy=".5" r=".5">
+          <stop offset="0" stopColor="#FFD877" stopOpacity=".55" />
+          <stop offset="1" stopColor="#FFD877" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+    </svg>
+  );
+}
+
+/* ── Mango-leaf toran with marigolds ─────────────────────────── */
+const LEAF = 'M0 0 C 10 11, 10 34, 0 50 C -10 34, -10 11, 0 0 Z';
+
+export function Toran({ count = 25, className, style }: P & { count?: number }) {
+  const step = 44;
+  const w = count * step + step;
+  const sag = 26;
+  const y = (t: number) => 6 + 2 * t * (1 - t) * sag * 2;
+  const items = Array.from({ length: count }, (_, i) => {
+    const t = (i + 1) / (count + 1);
+    return { x: t * w, y: y(t), i };
+  });
+  return (
+    <svg
+      className={`toran ${className ?? ''}`}
+      style={style}
+      viewBox={`0 0 ${w} ${sag + 80}`}
+      preserveAspectRatio="xMidYMin meet"
+      aria-hidden="true"
+    >
+      <path d={`M0 6 Q ${w / 2} ${6 + sag * 2} ${w} 6`} fill="none" stroke="url(#g-gold)" strokeWidth="2" />
+      {items.map(({ x, y: yy, i }) =>
+        i % 3 === 1 ? (
+          <g key={i} transform={`translate(${x} ${yy + 9})`} className="toran__flower">
+            <line x1="0" y1="-8" x2="0" y2="0" stroke="#A8792C" strokeWidth="1" />
+            <circle r="9" fill="url(#g-marigold)" />
+            <circle r="6.2" fill="none" stroke="#B85F0E" strokeWidth="1.4" strokeDasharray="1.6 2.2" opacity=".75" />
+            <circle r="2.6" fill="#B85F0E" opacity=".7" />
+            <circle cy="19" r="5.5" fill="url(#g-marigold)" />
+          </g>
+        ) : (
+          <g
+            key={i}
+            className="toran__leaf"
+            style={{ animationDelay: `${(i % 7) * -0.6}s` }}
+            transform={`translate(${x} ${yy}) rotate(${i % 2 ? 4 : -4})`}
+          >
+            <path d={LEAF} fill={i % 2 ? 'url(#g-leaf)' : 'url(#g-leaf-2)'} />
+            <path d="M0 3 L0 46" stroke="#D8C07A" strokeWidth=".9" opacity=".75" />
+            <path d="M0 14 L5 10 M0 22 L-5 18 M0 30 L5 26 M0 38 L-4 34" stroke="#D8C07A" strokeWidth=".5" opacity=".5" />
+          </g>
+        ),
+      )}
+    </svg>
+  );
+}
+
+/* ── Hanging jasmine strand ─────────────────────────────────── */
+export function JasmineStrand({ length = 14, className, style }: P & { length?: number }) {
+  const gap = 15;
+  const h = length * gap + 30;
+  return (
+    <svg className={`jasmine ${className ?? ''}`} style={style} viewBox={`0 0 30 ${h}`} aria-hidden="true">
+      <line x1="15" y1="0" x2="15" y2={h - 18} stroke="#C9A45C" strokeWidth=".8" />
+      {Array.from({ length }, (_, i) => {
+        const yy = 10 + i * gap;
+        const accent = i % 6 === 5;
+        return (
+          <g key={i} transform={`translate(15 ${yy})`}>
+            {accent ? (
+              <circle r="4.6" fill="url(#g-marigold)" />
+            ) : (
+              <>
+                <ellipse cx="-4" rx="3.4" ry="5.6" transform="rotate(-24 -4 0)" fill="url(#g-jasmine)" stroke="#E3D9C1" strokeWidth=".4" />
+                <ellipse cx="4" rx="3.4" ry="5.6" transform="rotate(24 4 0)" fill="url(#g-jasmine)" stroke="#E3D9C1" strokeWidth=".4" />
+                <circle cy="-2" r="1.3" fill="#9BB37A" />
+              </>
+            )}
+          </g>
+        );
+      })}
+      <g transform={`translate(15 ${h - 14})`}>
+        <path d="M0 -6 C 4 -2 4 4 0 8 C -4 4 -4 -2 0 -6 Z" fill="url(#g-gold-v)" />
+      </g>
+    </svg>
+  );
+}
+
+/* ── Brass kuthu-vilakku lamp with living flame ─────────────── */
+export function BrassLamp({ className, style }: P) {
+  return (
+    <svg className={`lamp ${className ?? ''}`} style={style} viewBox="0 0 90 230" aria-hidden="true">
+      <circle className="lamp__glow" cx="45" cy="26" r="38" fill="url(#g-glow)" />
+      <path className="lamp__flame" d="M45 4 C 52 16 54 26 45 36 C 36 26 38 16 45 4 Z" fill="url(#g-flame)" />
+      <path d="M45 18 C 48 24 48 29 45 33 C 42 29 42 24 45 18 Z" fill="#FFF6D2" opacity=".85" />
+      {/* bowl */}
+      <path d="M10 42 Q45 66 80 42 L74 38 Q45 52 16 38 Z" fill="url(#g-gold)" />
+      <ellipse cx="45" cy="39" rx="31" ry="5" fill="#7A5418" opacity=".55" />
+      {/* stem with knots */}
+      <path d="M41 56 L39 168 L51 168 L49 56 Z" fill="url(#g-gold-v)" />
+      <ellipse cx="45" cy="62" rx="9" ry="5" fill="url(#g-gold)" />
+      <ellipse cx="45" cy="92" rx="12" ry="6" fill="url(#g-gold)" />
+      <ellipse cx="45" cy="98" rx="8" ry="3.5" fill="url(#g-gold-v)" />
+      <ellipse cx="45" cy="130" rx="10" ry="5" fill="url(#g-gold)" />
+      <ellipse cx="45" cy="160" rx="13" ry="6" fill="url(#g-gold)" />
+      {/* base */}
+      <path d="M30 168 L60 168 L72 196 L18 196 Z" fill="url(#g-gold-v)" />
+      <rect x="10" y="196" width="70" height="9" rx="3" fill="url(#g-gold)" />
+      <rect x="4" y="205" width="82" height="10" rx="4" fill="url(#g-gold-v)" />
+      <path d="M22 186 Q45 178 68 186" stroke="#7A5418" strokeWidth="1" fill="none" opacity=".5" />
+    </svg>
+  );
+}
+
+/* ── Temple mandapam arch (frames the couple's names) ───────── */
+export function MandapamArch({ className, style }: P) {
+  // Multi-cusped arch built from a row of small scallops over a pointed curve.
+  const cusps = Array.from({ length: 13 }, (_, i) => {
+    const a = Math.PI - (i / 12) * Math.PI;
+    return { x: 300 + Math.cos(a) * 220, y: 280 - Math.sin(a) * 200 };
+  });
+  return (
+    <svg
+      className={`mandapam ${className ?? ''}`}
+      style={style}
+      viewBox="0 -10 600 830"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
+      <g fill="none" stroke="url(#g-gold)" strokeLinecap="round" vectorEffect="non-scaling-stroke">
+        {/* outer & inner arch */}
+        <path d="M60 300 C 60 120 180 40 300 22 C 420 40 540 120 540 300" strokeWidth="2.2" />
+        <path d="M80 300 C 80 136 190 62 300 46 C 410 62 520 136 520 300" strokeWidth=".9" />
+        {/* finial */}
+        <path d="M300 22 L300 2 M292 10 Q300 -2 308 10" strokeWidth="1.4" />
+        <circle cx="300" cy="-4" r="3" fill="#C99A45" stroke="none" />
+        {/* scallops */}
+        {cusps.slice(0, -1).map((p, i) => {
+          const n = cusps[i + 1];
+          const mx = (p.x + n.x) / 2;
+          const my = (p.y + n.y) / 2;
+          const dx = mx - 300;
+          const dy = my - 280;
+          const len = Math.hypot(dx, dy);
+          return (
+            <path
+              key={i}
+              d={`M${p.x} ${p.y} Q ${mx - (dx / len) * 16} ${my - (dy / len) * 16} ${n.x} ${n.y}`}
+              strokeWidth="1"
+              opacity=".85"
+            />
+          );
+        })}
+        {cusps.map((p, i) => (
+          <circle key={`d${i}`} cx={p.x} cy={p.y} r="2.2" fill="#C99A45" stroke="none" />
+        ))}
+        {/* pillars */}
+        {[60, 520].map((x) => (
+          <g key={x}>
+            <rect x={x - 10} y="300" width="40" height="14" rx="2" strokeWidth="1.4" />
+            <path d={`M${x - 4} 314 L${x + 24} 314 L${x + 20} 330 L${x} 330 Z`} strokeWidth="1" />
+            <path d={`M${x + 2} 330 L${x + 2} 760 M${x + 18} 330 L${x + 18} 760`} strokeWidth="1.4" />
+            {[400, 520, 640].map((yy) => (
+              <g key={yy}>
+                <path d={`M${x - 2} ${yy} L${x + 22} ${yy}`} strokeWidth="1" />
+                <circle cx={x + 10} cy={yy + 12} r="4" strokeWidth=".9" />
+                <path d={`M${x - 2} ${yy + 24} L${x + 22} ${yy + 24}`} strokeWidth="1" />
+              </g>
+            ))}
+            <rect x={x - 12} y="760" width="44" height="12" rx="2" strokeWidth="1.4" />
+            <rect x={x - 18} y="772" width="56" height="14" rx="2" strokeWidth="1.4" />
+          </g>
+        ))}
+        {/* hanging bells */}
+        {[160, 230, 370, 440].map((x, i) => {
+          const yy = i === 0 || i === 3 ? 150 : 96;
+          return (
+            <g key={x} className="mandapam__bell" style={{ animationDelay: `${i * -0.8}s`, transformOrigin: `${x}px ${yy - 30}px` }}>
+              <path d={`M${x} ${yy - 34} L${x} ${yy}`} strokeWidth=".8" />
+              <path d={`M${x - 7} ${yy + 12} Q${x - 7} ${yy} ${x} ${yy} Q${x + 7} ${yy} ${x + 7} ${yy + 12} Z`} fill="#C99A45" stroke="none" />
+              <circle cx={x} cy={yy + 15} r="2" fill="#C99A45" stroke="none" />
+            </g>
+          );
+        })}
+      </g>
+    </svg>
+  );
+}
+
+/* ── Lotus mark & dividers ──────────────────────────────────── */
+export function Lotus({ className, style }: P) {
+  return (
+    <svg className={className} style={style} viewBox="0 0 64 40" aria-hidden="true">
+      <g fill="none" stroke="url(#g-gold)" strokeWidth="1.3" strokeLinejoin="round">
+        <path d="M32 4 C 40 14 40 26 32 36 C 24 26 24 14 32 4 Z" />
+        <path d="M32 36 C 22 32 14 24 12 12 C 22 14 29 22 32 36 Z" />
+        <path d="M32 36 C 42 32 50 24 52 12 C 42 14 35 22 32 36 Z" />
+        <path d="M32 36 C 20 36 8 32 2 24 C 12 22 24 26 32 36 Z" />
+        <path d="M32 36 C 44 36 56 32 62 24 C 52 22 40 26 32 36 Z" />
+      </g>
+    </svg>
+  );
+}
+
+export function Divider({ className, style }: P) {
+  return (
+    <div className={`divider ${className ?? ''}`} style={style} aria-hidden="true">
+      <span className="divider__line" />
+      <svg viewBox="0 0 120 24" className="divider__mark">
+        <g fill="url(#g-gold)">
+          <path d="M60 2 L66 12 L60 22 L54 12 Z" />
+          <circle cx="44" cy="12" r="2.4" />
+          <circle cx="76" cy="12" r="2.4" />
+          <circle cx="33" cy="12" r="1.5" />
+          <circle cx="87" cy="12" r="1.5" />
+        </g>
+        <path d="M2 12 H28 M92 12 H118" stroke="url(#g-gold)" strokeWidth="1" />
+      </svg>
+      <span className="divider__line" />
+    </div>
+  );
+}
+
+/* ── Kolam-inspired corner flourish ─────────────────────────── */
+export function Corner({ className, style }: P) {
+  return (
+    <svg className={`corner ${className ?? ''}`} style={style} viewBox="0 0 120 120" aria-hidden="true">
+      <g fill="none" stroke="url(#g-gold)" strokeLinecap="round">
+        <path d="M6 114 V6 H114" strokeWidth="1.6" />
+        <path d="M14 114 V14 H114" strokeWidth=".7" />
+        <path d="M14 60 C 30 60 40 50 40 34 C 40 22 30 14 22 22 C 16 28 22 38 30 34" strokeWidth="1.1" />
+        <path d="M60 14 C 60 30 50 40 34 40" strokeWidth="1.1" />
+        <path d="M24 24 C 36 36 46 40 60 40 C 72 40 80 34 86 26" strokeWidth=".8" opacity=".8" />
+        <path d="M24 24 C 36 36 40 46 40 60 C 40 72 34 80 26 86" strokeWidth=".8" opacity=".8" />
+      </g>
+      <g fill="#C99A45">
+        <circle cx="24" cy="24" r="3" />
+        <circle cx="90" cy="24" r="1.8" />
+        <circle cx="24" cy="90" r="1.8" />
+        <circle cx="100" cy="14" r="1.4" />
+        <circle cx="14" cy="100" r="1.4" />
+      </g>
+    </svg>
+  );
+}
+
+/* ── Wax seal monogram ──────────────────────────────────────── */
+export function WaxSeal({ initials, className, style }: P & { initials: [string, string] }) {
+  const petals = Array.from({ length: 18 }, (_, i) => (i * 360) / 18);
+  return (
+    <svg className={className} style={style} viewBox="0 0 120 120" aria-hidden="true">
+      <defs>
+        <radialGradient id="g-wax" cx=".38" cy=".32" r=".75">
+          <stop offset="0" stopColor="#9E2B3D" />
+          <stop offset=".6" stopColor="#701426" />
+          <stop offset="1" stopColor="#4A0B17" />
+        </radialGradient>
+      </defs>
+      <g transform="translate(60 60)">
+        {petals.map((a) => (
+          <circle key={a} cx={Math.cos((a * Math.PI) / 180) * 47} cy={Math.sin((a * Math.PI) / 180) * 47} r="10" fill="url(#g-wax)" />
+        ))}
+        <circle r="48" fill="url(#g-wax)" />
+        <circle r="38" fill="none" stroke="#D9B86A" strokeWidth="1.2" opacity=".9" />
+        <circle r="34" fill="none" stroke="#D9B86A" strokeWidth=".5" strokeDasharray="1.5 3" opacity=".9" />
+        <text x="-13" y="9" textAnchor="middle" fontFamily="Cinzel, serif" fontSize="25" fill="#E9CF8E">
+          {initials[0]}
+        </text>
+        <text x="13" y="9" textAnchor="middle" fontFamily="Cinzel, serif" fontSize="25" fill="#E9CF8E">
+          {initials[1]}
+        </text>
+        <path d="M0 -14 L0 14" stroke="#D9B86A" strokeWidth=".8" />
+        <ellipse cx="-14" cy="-20" rx="12" ry="6" fill="#fff" opacity=".07" transform="rotate(-30 -14 -20)" />
+      </g>
+    </svg>
+  );
+}
