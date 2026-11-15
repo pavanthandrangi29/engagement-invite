@@ -53,8 +53,8 @@ export const weddingConfig = {
   bride: { name: 'Jaya Sree' },
   /** Illustrated artwork of the couple (no real photographs are published). */
   coupleIllustration: {
-    src: 'images/couple/couple-illustration-1388.webp',
-    srcSmall: 'images/couple/couple-illustration-720.webp',
+    src: 'images/couple/couple-portrait-v2-1388.webp',
+    srcSmall: 'images/couple/couple-portrait-v2-720.webp',
     alt: 'Illustration of Harsha and Jaya Sree holding hands, wearing jasmine garlands, in traditional South Indian attire before a temple backdrop',
     width: 1388,
     height: 1133,
