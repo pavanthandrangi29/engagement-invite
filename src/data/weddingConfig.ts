@@ -37,9 +37,9 @@ const ADDRESS_ONE_LINE =
 
 export const weddingConfig = {
   // ── Identity ────────────────────────────────────────────────
-  familyTitle: "THANDRANGI'S & KARRI'S",
+  familyTitle: "THANDRANGI & KARRI'S",
   tagline: 'A Celebration of Togetherness',
-  eventType: 'Engagement Invitation',
+  eventType: 'Engagement Celebration',
   heroEyebrow: 'Engagement Celebration',
 
   /** Invocation shown at the very top of the invitation. Set to '' to hide. */
@@ -131,13 +131,13 @@ export const weddingConfig = {
   siteUrl: 'https://tinyurl.com/harsha-engagement-invite',
   /** Text sent by the WhatsApp button. {link} is replaced with siteUrl. */
   whatsappMessage: [
-    'With immense joy and happiness, we invite you to celebrate the engagement of Harsha & Jaya Sree! 💜',
+    'With immense joy and happiness, we invite you to celebrate the engagement of Harsha & Jaya Sree!',
     '',
     'Your presence and blessings would make our special day even more memorable.',
     '',
     'All event details and location directions are in the invitation below.',
     '',
-    '💌 {link}',
+    '{link}',
     '',
     'Looking forward to celebrating with you!',
   ].join('\n'),

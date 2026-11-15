@@ -2476,9 +2476,12 @@ button {
   color: var(--gold-deep);
 }
 .blessings__signature {
-  font-family: var(--f-sign);
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: 0.01em;
   text-wrap: balance;
-  font-size: clamp(2rem, 8.4vw, 3.4rem);
+  font-size: clamp(1.9rem, 8vw, 3rem);
   line-height: 1.2;
   color: var(--maroon);
 }

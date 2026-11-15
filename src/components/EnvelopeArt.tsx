@@ -295,11 +295,6 @@ export function OrganicSeal({ initials, className, style }: P & { initials: [str
         strokeWidth="1.5"
         strokeLinejoin="round"
       />
-      <g transform="translate(60 76) scale(.42)" fill="none" stroke="#E2C47A" strokeWidth="2.2">
-        <path d="M0 -14 C 6 -6 6 2 0 10 C -6 2 -6 -6 0 -14 Z" />
-        <path d="M0 10 C -8 7 -14 0 -15 -8 C -7 -6 -2 1 0 10 Z" />
-        <path d="M0 10 C 8 7 14 0 15 -8 C 7 -6 2 1 0 10 Z" />
-      </g>
       <ellipse cx="44" cy="34" rx="16" ry="7" fill="#fff" opacity=".12" transform="rotate(-30 44 34)" />
     </svg>
   );
