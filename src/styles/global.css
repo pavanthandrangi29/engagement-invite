@@ -800,7 +800,7 @@ button {
 .envelope__names {
   font-family: var(--f-sign);
   font-weight: 400;
-  font-size: calc(var(--env-w) * 0.118);
+  font-size: calc(var(--env-w) * 0.1);
   line-height: 1.15;
   color: var(--maroon);
   white-space: nowrap;
@@ -836,9 +836,10 @@ button {
 .envelope__family {
   font-family: var(--f-display);
   font-weight: 600;
-  font-size: calc(var(--env-w) * 0.056);
-  letter-spacing: 0.16em;
-  padding-left: 0.16em;
+  font-size: calc(var(--env-w) * 0.047);
+  letter-spacing: 0.08em;
+  padding-left: 0.08em;
+  white-space: nowrap;
   color: #8a611f;
 }
 .envelope__event {
@@ -2476,8 +2477,8 @@ button {
 }
 .blessings__signature {
   font-family: var(--f-sign);
-  white-space: nowrap;
-  font-size: clamp(2.1rem, 8.4vw, 3.6rem);
+  text-wrap: balance;
+  font-size: clamp(2rem, 8.4vw, 3.4rem);
   line-height: 1.2;
   color: var(--maroon);
 }

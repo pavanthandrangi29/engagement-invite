@@ -281,13 +281,20 @@ export function OrganicSeal({ initials, className, style }: P & { initials: [str
       <circle cx="60" cy="60" r="38" fill="url(#g-seal-in)" />
       <circle cx="60" cy="60" r="38" fill="none" stroke="#3A1D52" strokeWidth="2" opacity=".35" />
       <circle cx="60" cy="60" r="34" fill="none" stroke="#E2C47A" strokeWidth="1.1" />
-      <text x="47" y="62" textAnchor="middle" fontFamily="Cinzel, serif" fontSize="20" fill="#F1DDA6">
+      <text x="40" y="62" textAnchor="middle" fontFamily="Cinzel, serif" fontSize="19" fill="#F1DDA6">
         {initials[0]}
       </text>
-      <text x="73" y="62" textAnchor="middle" fontFamily="Cinzel, serif" fontSize="20" fill="#F1DDA6">
+      <text x="80" y="62" textAnchor="middle" fontFamily="Cinzel, serif" fontSize="19" fill="#F1DDA6">
         {initials[1]}
       </text>
-      <path d="M60 44 V64" stroke="#E2C47A" strokeWidth=".9" />
+      {/* infinity between the initials */}
+      <path
+        d="M60 55 C 56.5 50 50 50 50 55 C 50 60 56.5 60 60 55 C 63.5 50 70 50 70 55 C 70 60 63.5 60 60 55 Z"
+        fill="none"
+        stroke="#E2C47A"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
+      />
       <g transform="translate(60 76) scale(.42)" fill="none" stroke="#E2C47A" strokeWidth="2.2">
         <path d="M0 -14 C 6 -6 6 2 0 10 C -6 2 -6 -6 0 -14 Z" />
         <path d="M0 10 C -8 7 -14 0 -15 -8 C -7 -6 -2 1 0 10 Z" />

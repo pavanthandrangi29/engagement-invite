@@ -1,4 +1,4 @@
-# Thandrangi's · Harsha & Jayasree — Engagement Invitation
+# Thandrangi's · Harsha & Jaya Sree — Engagement Invitation
 
 A luxury digital engagement invitation: envelope opening, royal Telugu styling,
 live countdown to **Sunday, 22 November 2026, 9:31 AM IST**, couple portraits, family

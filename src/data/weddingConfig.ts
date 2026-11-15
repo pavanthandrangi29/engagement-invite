@@ -37,7 +37,7 @@ const ADDRESS_ONE_LINE =
 
 export const weddingConfig = {
   // ── Identity ────────────────────────────────────────────────
-  familyTitle: "THANDRANGI'S",
+  familyTitle: "THANDRANGI'S & KARRI'S",
   tagline: 'A Celebration of Togetherness',
   eventType: 'Engagement Invitation',
   heroEyebrow: 'Engagement Celebration',
@@ -50,12 +50,12 @@ export const weddingConfig = {
 
   // ── Couple ──────────────────────────────────────────────────
   groom: { name: 'Harsha' },
-  bride: { name: 'Jayasree' },
+  bride: { name: 'Jaya Sree' },
   /** Illustrated artwork of the couple (no real photographs are published). */
   coupleIllustration: {
     src: 'images/couple/couple-illustration-1388.webp',
     srcSmall: 'images/couple/couple-illustration-720.webp',
-    alt: 'Illustration of Harsha and Jayasree holding hands, wearing jasmine garlands, in traditional South Indian attire before a temple backdrop',
+    alt: 'Illustration of Harsha and Jaya Sree holding hands, wearing jasmine garlands, in traditional South Indian attire before a temple backdrop',
     width: 1388,
     height: 1133,
   },
@@ -82,7 +82,7 @@ export const weddingConfig = {
     /** Exact ceremony moment in Indian Standard Time — drives the countdown. */
     startISO: '2026-11-22T09:31:00+05:30',
     afterEventMessage:
-      'The auspicious moment has arrived. Harsha & Jayasree are now engaged — thank you for your love and blessings.',
+      'The auspicious moment has arrived. Harsha & Jaya Sree are now engaged — thank you for your love and blessings.',
   },
 
   // ── Venue ───────────────────────────────────────────────────
@@ -131,7 +131,7 @@ export const weddingConfig = {
   siteUrl: 'https://tinyurl.com/harsha-engagement-invite',
   /** Text sent by the WhatsApp button. {link} is replaced with siteUrl. */
   whatsappMessage: [
-    'With immense joy and happiness, we invite you to celebrate the engagement of Harsha & Jayasree! 💜',
+    'With immense joy and happiness, we invite you to celebrate the engagement of Harsha & Jaya Sree! 💜',
     '',
     'Your presence and blessings would make our special day even more memorable.',
     '',
@@ -158,7 +158,7 @@ export const weddingConfig = {
       'We warmly welcome you to celebrate this beautiful occasion with us.',
     ],
     signOff: 'With love,',
-    signature: 'Thandrangi Family',
+    signature: 'Thandrangi & Karri Families',
   },
 };
 
