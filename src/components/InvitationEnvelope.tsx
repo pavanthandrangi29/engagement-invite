@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { weddingConfig as c } from '../data/weddingConfig';
+import { autoStartMusic, playMusic } from '../lib/music';
 import { GoldSwoosh, LeafLine, LilyBouquet, OrganicSeal, TempleArch, FloralSpray } from './EnvelopeArt';
 import { Corner, FallingPetals, Ganesha, HangingLantern, Lotus } from './Ornaments';
 
@@ -28,10 +29,12 @@ export default function InvitationEnvelope({ onOpen }: Props) {
 
   useEffect(() => {
     btnRef.current?.focus({ preventScroll: true });
+    autoStartMusic();
   }, []);
 
   const open = () => {
     if (phase !== 'closed') return;
+    playMusic(); // start inside the tap so browsers allow sound
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     setPhase('opening');
     window.setTimeout(() => setPhase('leaving'), reduce ? 50 : OPEN_DURATION - 700);

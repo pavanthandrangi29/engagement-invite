@@ -1,6 +1,7 @@
 import { weddingConfig as c } from '../data/weddingConfig';
 import { si } from '../lib/style';
 import Countdown from './Countdown';
+import ScheduleCard from './ScheduleCard';
 import GoldParticles from './GoldParticles';
 import { ChevronDown } from './Icons';
 import { BrassLamp, Divider, FallingPetals, JasmineStrand, MandapamArch, Ganesha, Toran } from './Ornaments';
@@ -58,19 +59,7 @@ export default function HeroSection() {
           <div className="hero__when stagger" style={si(7)}>
             <p className="hero__day">{c.event.dayName}</p>
             <p className="hero__date">{c.event.dateLong}</p>
-            <dl className="schedule">
-              <div className="schedule__item">
-                <dt>Engagement Muhurtham</dt>
-                <dd>{c.event.time}</dd>
-              </div>
-              <span className="schedule__sep" aria-hidden="true">
-                ◆
-              </span>
-              <div className="schedule__item">
-                <dt>Lunch</dt>
-                <dd>{c.event.lunchTime}</dd>
-              </div>
-            </dl>
+            <ScheduleCard />
           </div>
 
           <div className="stagger" style={si(8)}>

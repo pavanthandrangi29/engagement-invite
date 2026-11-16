@@ -1,41 +1,26 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { weddingConfig as c } from '../data/weddingConfig';
-import { asset } from '../lib/links';
+import { hasMusic, isMusicPlaying, onMusicChange, toggleMusic } from '../lib/music';
 import { Music, Pause } from './Icons';
 
-/** Optional background music. Never autoplays; hidden when no track is configured. */
+/** Play / pause button for the looping background music. */
 export default function MusicToggle() {
-  const audio = useRef<HTMLAudioElement | null>(null);
-  const [playing, setPlaying] = useState(false);
+  const [playing, setPlaying] = useState(isMusicPlaying());
 
-  useEffect(() => () => audio.current?.pause(), []);
+  useEffect(() => {
+    const off = onMusicChange(setPlaying);
+    return () => {
+      off();
+    };
+  }, []);
 
-  if (!c.music.src) return null;
-
-  const toggle = async () => {
-    if (!audio.current) {
-      audio.current = new Audio(asset(c.music.src));
-      audio.current.loop = true;
-      audio.current.volume = 0.55;
-    }
-    if (playing) {
-      audio.current.pause();
-      setPlaying(false);
-    } else {
-      try {
-        await audio.current.play();
-        setPlaying(true);
-      } catch {
-        setPlaying(false);
-      }
-    }
-  };
+  if (!hasMusic()) return null;
 
   return (
     <button
       type="button"
       className={`fab fab--music ${playing ? 'is-playing' : ''}`}
-      onClick={toggle}
+      onClick={toggleMusic}
       aria-pressed={playing}
       aria-label={playing ? 'Pause music' : `Play music${c.music.title ? `: ${c.music.title}` : ''}`}
     >

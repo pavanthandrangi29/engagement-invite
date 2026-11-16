@@ -146,7 +146,7 @@ export const weddingConfig = {
 
   // ── Music (optional, never autoplays) ───────────────────────
   /** e.g. 'music/nadaswaram.mp3' placed in public/music/. '' hides the button. */
-  music: { src: '', title: '' },
+  music: { src: 'music/darling_theme.mp3', title: 'Darling theme' },
 
   // ── Gallery ─────────────────────────────────────────────────
   /** Empty = gallery section hidden. */
