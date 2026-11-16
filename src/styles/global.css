@@ -3048,3 +3048,94 @@ button {
     min-height: 40px;
   }
 }
+
+/* ── Compact timings card (fits phones with browser bars) ── */
+.sched {
+  width: min(100%, 400px);
+  margin-top: 10px;
+  padding: 7px clamp(10px, 3.5vw, 18px) 8px;
+  gap: clamp(6px, 2vw, 14px);
+}
+.sched__col {
+  gap: 2px;
+}
+.sched__icon {
+  width: clamp(18px, 5.5vw, 24px);
+}
+.sched__icon-row span {
+  width: clamp(10px, 4vw, 20px);
+}
+.sched__label {
+  font-size: clamp(0.56rem, 2.4vw, 0.7rem);
+  letter-spacing: 0.12em;
+  min-height: 2.4em;
+}
+.sched__pill {
+  min-height: clamp(34px, 9.5vw, 44px);
+  padding: 4px 10px;
+}
+.sched__time {
+  font-size: clamp(0.9rem, 3.9vw, 1.12rem);
+}
+.sched__divider span {
+  height: clamp(16px, 5vw, 26px);
+}
+.sched__jasmine {
+  width: clamp(42px, 12vw, 60px);
+}
+.sched__jasmine--tl {
+  top: -15px;
+  left: -4px;
+}
+.sched__jasmine--br {
+  bottom: -15px;
+  right: -4px;
+}
+
+/* Shorter phone screens: tighten the top so date, timings & countdown fit */
+@media (max-height: 820px) and (max-width: 600px) {
+  .hero {
+    padding-top: 40px;
+    padding-bottom: 60px;
+  }
+  .invocation {
+    margin-bottom: 6px;
+  }
+  .invocation__mark {
+    height: 38px;
+  }
+  .hero__telugu {
+    margin-bottom: 6px;
+  }
+  .hero__mandapam {
+    padding-top: 44px;
+    padding-bottom: 6px;
+  }
+  .hero__name {
+    font-size: clamp(2.6rem, 12.5vw, 4.6rem);
+  }
+  .hero .divider {
+    margin: 8px auto;
+  }
+  .hero__date {
+    font-size: clamp(1.2rem, 5.2vw, 1.6rem);
+  }
+  .countdown {
+    margin-top: 12px;
+  }
+}
+@media (max-height: 680px) and (max-width: 600px) {
+  .hero {
+    padding-top: 30px;
+  }
+  .hero__telugu {
+    margin-bottom: 2px;
+    font-size: 0.78rem;
+  }
+  .hero__mandapam {
+    padding-top: 36px;
+  }
+  .hero__name {
+    font-size: clamp(2.3rem, 11vw, 3.8rem);
+  }
+}
