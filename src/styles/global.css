@@ -2634,9 +2634,22 @@ button {
   }
 }
 .fab--whatsapp {
-  right: 16px;
+  right: 14px;
+  padding: 0;
+  width: 34px;
+  min-width: 34px;
+  height: 34px;
+  justify-content: center;
   background: linear-gradient(150deg, #2a8a5c, #1d6b45);
   color: #fff;
+  box-shadow:
+    0 0 0 2px rgba(251, 246, 236, 0.75),
+    0 8px 16px -8px rgba(0, 0, 0, 0.45);
+  opacity: 0.92;
+}
+.fab--whatsapp svg {
+  width: 17px;
+  height: 17px;
 }
 .fab__label {
   display: none;
@@ -2672,12 +2685,6 @@ button {
 @media (min-width: 600px) {
   .gallery__grid {
     columns: 2;
-  }
-  .fab__label {
-    display: inline;
-  }
-  .fab--whatsapp {
-    padding: 0 22px 0 18px;
   }
 }
 
