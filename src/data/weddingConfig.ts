@@ -77,8 +77,10 @@ export const weddingConfig = {
     dayName: 'Sunday',
     dateLong: '22 November 2026',
     dateFull: 'Sunday, 22 November 2026',
-    time: '9:31 AM onwards',
-    followedBy: 'Followed by Lunch',
+    /** Engagement muhurtham */
+    time: '9:31 AM',
+    lunchTime: '12:30 PM onwards',
+    followedBy: 'Lunch from 12:30 PM onwards',
     /** Exact ceremony moment in Indian Standard Time — drives the countdown. */
     startISO: '2026-11-22T09:31:00+05:30',
     afterEventMessage:

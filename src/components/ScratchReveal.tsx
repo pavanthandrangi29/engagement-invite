@@ -175,7 +175,7 @@ export default function ScratchReveal() {
               <span className="scratch__month">
                 {month} {year}
               </span>
-              <span className="scratch__time">{c.event.time}</span>
+              <span className="scratch__time">Muhurtham · {c.event.time}</span>
             </div>
             <canvas
               ref={canvasRef}
